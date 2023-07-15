@@ -173,6 +173,11 @@ h1,h2,h3,h4,h5, p
 	}
 #home img{
     opacity: 0.5;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 120px;
+    padding-bottom: 140px;
+    text-align: center;
 }
 #home h1
     {
