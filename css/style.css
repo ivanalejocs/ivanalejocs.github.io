@@ -170,6 +170,7 @@ h1,h2,h3,h4,h5, p
         padding-top: 120px;
         padding-bottom: 140px;
         text-align: center;
+        opacity: 0.5;
 	}
 #home h1
     {
@@ -298,7 +299,7 @@ h1,h2,h3,h4,h5, p
     }
 #portfolio .portfolio-thumb .portfolio-overlay
     {
-        background: #D43F52;
+        background: #1827b4;
         top: 0;
         left: 0;
         right: 0;
@@ -336,7 +337,7 @@ h1,h2,h3,h4,h5, p
     {
         border: 2px solid #ffffff;
         border-radius: 50%;
-        color: #D43F52;
+        color: #1827b4;
         width: 50px;
         height: 50px;
         line-height: 45px;
@@ -358,7 +359,7 @@ h1,h2,h3,h4,h5, p
     }
 #contact input[type="submit"]
     {
-        background: #D43F52;
+        background: #1827b4;
         border: 2px solid transparent;
         color: #ffffff;
         font-weight: bold;
@@ -367,7 +368,7 @@ h1,h2,h3,h4,h5, p
 #contact input[type="submit"]:hover
     {
         background: #ffffff;
-        color: #D43F52;
+        color: #1827b4;
     }
 /* end contact */
 
@@ -408,6 +409,6 @@ footer hr
     }
 .social-icon li a:hover
     {
-        color: #D43F52;
+        color: #1827b4;
     }
 /* end social icon */
