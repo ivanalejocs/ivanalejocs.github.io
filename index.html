@@ -1,238 +1,662 @@
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="utf-8">
-		<title>Ivan Cabrera Portfolio</title>
-		<meta name="description" content="Portafolio de Ivan Cabrera">
-		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-        	<meta name="Ivan">        
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivan Cabrera - Desarrollador de Software</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-		<!-- animate -->
-		<link rel="stylesheet" href="css/animate.min.css">
-		<!-- bootstrap -->
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<!-- font-awesome -->
-		<link rel="stylesheet" href="css/font-awesome.min.css">
-		<!-- google font -->
-		<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700,800' rel='stylesheet' type='text/css'>
-		<!-- fullpage -->
-		<link rel="stylesheet" href="css/jquery.fullPage.css">
-		<!-- custom -->
-		<link rel="stylesheet" href="css/style.css">
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
 
-	</head>
-	<body>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-	<div id="fullpage">
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
 
-		<!-- start home -->
-		<div id="home" class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-2"></div>
-					<div class="col-md-8 wow fadeIn" data-wow-delay="0.9s">
-						<h2>Ivan Cabrera</h2>
-						<h1>Desarrollador Web</h1>
-						<h2 class="rotate">DISEÑADOR &AMP; DESARROLLADOR</h2>
-						<p>Especializado en manejo de Wordpress y Elementor</p>
-						<a href="https://docs.google.com/document/d/1DvJGcooy9iMobkrvOMg_cEtg_RMVwf2Z/edit?usp=sharing&ouid=114725326686692788489&rtpof=true&sd=true" target="_blank" class="btn btn-default smoothScroll wow fadeInUp" data-wow-delay="1s">HOJA DE VIDA</a>
-						<--  <lottie-player src="URL AQUI" background="#FFFFFF" speed="1" style="width: 300px; height: 300px" loop controls autoplay direction="1" mode="normal"></lottie-player> -->
-					</div>
-					<div class="col-md-2"></div>
-				</div>
-			</div>
-		</div>
-		<!-- end home -->
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
 
-		<!-- start work -->
-		<div id="work" class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 wow bounce">
-						<h2>QUE HAGO?</h2>
-					</div>
-                </div>  
-                
-                <div class="row">
-					<div class="col-md-4 col-xs-11 wow fadeInUp" data-wow-delay="0.6s">
-						<div class="media">
-							<div class="media-object media-left">
-								<i class="fa fa-laptop"></i>
-							</div>
-							<div class="media-body">
-								<h3 class="media-heading">Diseño adaptativo</h3>
-								<p>Hoy en día todo proyecto debe adaptarse a cualquier tipo y tamaño de pantalla.</p>
-							</div>
-						</div>
-					</div>
-                    
-					<div class="col-md-4 col-xs-11 wow fadeInUp" data-wow-delay="0.6s">
-						<div class="media">
-							<div class="media-object media-left">
-								<i class="fa fa-link"></i>
-							</div>
-							<div class="media-body">
-								<h3 class="media-heading">Wordpress</h3>
-								<p>Especialista en elaboración de websites realizados con Wordpress y Elementor, mi unica limitacion es la imaginación</p>
-							</div>
-						</div>
-					</div>
-                    
-					<div class="col-md-4 col-xs-11 wow fadeInUp" data-wow-delay="0.6s">
-						<div class="media">
-							<div class="media-object media-left">
-								<i class="fa fa-paper-plane"></i>
-							</div>
-							<div class="media-body">
-								<h3 class="media-heading">Diseño UI &AMP; UX</h3>
-								<p>En cada proyecto se utilizan recursos gratuitos y de igual manera los otorgados por el cliente.</p>
-							</div>
-						</div>
-					</div>
-                    
-				</div>
-			</div>
-		</div>
-		<!-- end work -->
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
 
-		<!-- start about -->
-		<div id="about" class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-xs-11 wow fadeInLeft" data-wow-delay="0.9s">
-						<h2>SOBRE DE MI</h2>
-						<h4>DISEÑADOR &AMP; DESARROLLADOR</h4>
-						<p>Gracias a mi curiosidad por el mundo del desarrollo web, he logrado aprender a elaborar sitios web tanto con CMS como con codigo html/css/js</p>
-						<p>En mi tiempo como desarrollador he adquirido habilidades necesarias para ayudarte a <b>TI</b> para que puedas </b>EXISTIR</b> en internet</p>
-					</div>
-					<div class="col-md-6 col-xs-11 wow fadeInRight animated" data-wow-delay="0.9s" style="visibility: visible; animation-delay: 0.9s; animation-name: fadeInRight;">
-						<span class="text-top">Diseño Web<small>95%</small></span>
-							<div class="progress">
-								<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
-							</div>
-						<span>Wordpress<small>100%</small></span>
-							<div class="progress">
-								<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-							</div>
-						<span>Posicionamiento Orgánico (SEO)<small>70%</small></span>
-							<div class="progress">
-								<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-							</div>
-						<span>HTLM5 &amp; CSS3 <small>85%</small></span>
-							<div class="progress">
-								<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
-							</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- end about -->
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-		<!-- start portfolio -->
-		<div id="portfolio" class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h2 class="wow bounce">PORTAFOLIO</h2>
-				</div>
-				<div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-					<div class="portfolio-thumb">
-						<img src="images/portfolio-img1.jpg" class="img-responsive" alt="portfolio img">
-							<div class="portfolio-overlay">
-								<h4>Alpha Imagen</h4>
-								<h5>www.alphaimagen.com</h5>
-							</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-					<div class="portfolio-thumb">
-						<img src="images/portfolio-img2.jpg" class="img-responsive" alt="portfolio img">
-							<div class="portfolio-overlay">
-								<h4>Kombucha con amor</h4>
-								<h5>www.kombuchaconamor.com</h5>
-							</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-					<div class="portfolio-thumb">
-						<img src="images/portfolio-img3.jpg" class="img-responsive" alt="portfolio img">
-							<div class="portfolio-overlay">
-								<h4>Shoes by Alexandra	</h4>
-								<h5>www.shoesbyalexandra.com</h5>
-							</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-					<div class="portfolio-thumb">
-						<img src="images/portfolio-img4.jpg" class="img-responsive" alt="portfolio img">
-							<div class="portfolio-overlay">
-								<h4>Incolor</h4>
-								<h5>www.incolorec.com.ec</h5>
-							</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-					<div class="portfolio-thumb">
-						<img src="images/portfolio-img5.jpg" class="img-responsive" alt="portfolio img">
-							<div class="portfolio-overlay">
-								<h4>Funeraria La América</h4>
-								<h5>www.funerarialaamerica.com</h5>
-							</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-xs-6 wow fadeIn" data-wow-delay="0.6s">
-					<div class="portfolio-thumb">
-						<img src="images/portfolio-img6.jpg" class="img-responsive" alt="portfolio img">
-							<div class="portfolio-overlay">
-								<h4>Doing Ideas</h4>
-								<h5>www.doing-ideas.com</h5>
-							</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end portfolio -->
-	<!-- start footer -->
-		<footer>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 wow fadeIn" data-wow-delay="0.9s">
-						<p>Copyright &copy; 2023 Ivan Cabrera Portafolio Personal. 
-                        
-                         Diseñado por <a rel="nofollow noopener" href="hhttps://ivanalejocs.github.io/">Ivan Cabrera</a></p>
-						<hr>
-						<ul class="social-icon">
-							<li><a href="https://www.facebook.com/profile.php?id=100085050935694" target="_blank" class="fa fa-facebook"></a></li>
-							<li><a href="mailto:ivanalejocs@gmail.com" target="_blank" class="fa fa-envelope"></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- end footer -->
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-	</div>
+        .nav-links a:hover {
+            color: #667eea;
+        }
 
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
 
-		<script src="js/jquery.js"></script>
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
 
-		<script src="js/bootstrap.min.js"></script>
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
 
-		<script src="js/jquery.fullPage.js"></script>
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-		<script src="js/smoothscroll.js"></script>
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
 
-		<script src="js/wow.min.js"></script>
+        .hero .subtitle {
+            font-size: 1.3em;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
 
-		<script src="js/jquery.simple-text-rotator.js"></script>
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
 
-		<script src="js/custom.js"></script>
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
 
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: white;
+        }
 
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
 
-	</body>
-</html>
+        .about-text h2 {
+            font-size: 2.5em;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .about-text p {
+            font-size: 1.1em;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item i {
+            color: #667eea;
+            font-size: 1.2em;
+        }
+
+        .contact-item a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #667eea;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category i {
+            font-size: 3em;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .project-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .tab-button {
+            background: transparent;
+            border: 2px solid #667eea;
+            color: #667eea;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3em;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-inactive {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-redesign {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .project-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Ivan Cabrera</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Ivan Cabrera</h1>
+                <p class="subtitle">Desarrollador de Software especializado en Aplicaciones Móviles y Sitios Web</p>
+                <a href="#proyectos" class="cta-button">
+                    <i class="fas fa-rocket"></i>
+                    Ver mis proyectos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre-mi" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-user"></i>
+                        <span>Ivan Cabrera</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:ivanalejocs@gmail.com">ivanalejocs@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/ivanalejocs/ivanalejocs.github.io" target="_blank">GitHub Portfolio</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-code"></i>
+                        <span>Desarrollador de Software</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2>Sobre Mí</h2>
+                    <p>
+                        Soy un desarrollador de software apasionado con experiencia en el desarrollo de aplicaciones móviles y sitios web. 
+                        Me especializo en crear soluciones digitales innovadoras que combinan funcionalidad, diseño atractivo y experiencia 
+                        de usuario excepcional.
+                    </p>
+                    <p>
+                        Mi enfoque se centra en desarrollar aplicaciones móviles robustas para Android y sitios web responsivos que 
+                        se adapten a las necesidades específicas de cada cliente. Trabajo con las últimas tecnologías y mejores 
+                        prácticas del desarrollo de software.
+                    </p>
+                    <p>
+                        Disfruto enfrentando nuevos desafíos técnicos y colaborando en proyectos que generen un impacto positivo 
+                        en los usuarios finales.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="habilidades" class="skills">
+        <div class="container">
+            <h2 class="section-title">Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Desarrollo Móvil</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Android</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Kotlin</span>
+                        <span class="skill-tag">Flutter</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <i class="fas fa-globe"></i>
+                    <h3>Desarrollo Web</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">WordPress</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <i class="fas fa-database"></i>
+                    <h3>Base de Datos</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQLite</span>
+                        <span class="skill-tag">Firebase</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <i class="fas fa-tools"></i>
+                    <h3>Herramientas</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Android Studio</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Figma</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="proyectos" class="projects">
+        <div class="container">
+            <h2 class="section-title">Mis Proyectos</h2>
+            
+            <div class="project-tabs">
+                <button class="tab-button active" onclick="switchTab('websites')">Sitios Web</button>
+                <button class="tab-button" onclick="switchTab('apps')">Apps Móviles</button>
+            </div>
+
+            <!-- Websites Tab -->
+            <div id="websites" class="tab-content active">
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <!-- Espacio para imagen de Alpha Imagen -->
+                            Imagen del proyecto
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Alpha Imagen</h3>
+                            <p class="project-description">
+                                Sitio web corporativo para servicios de imagen y branding. Diseño moderno y responsivo 
+                                con galería de trabajos y formulario de contacto.
+                            </p>
+                            <span class="project-status status-active">Activo</span>
+                            <br>
+                            <a href="https://alphaimagen.com/" target="_blank" class="project-link">
+                                Ver sitio web <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <!-- Espacio para imagen de Shoes by Alexandra -->
+                            Imagen del proyecto
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Shoes by Alexandra</h3>
+                            <p class="project-description">
+                                E-commerce de calzado femenino con catálogo de productos, carrito de compras y 
+                                sistema de gestión de pedidos.
+                            </p>
+                            <span class="project-status status-active">Activo</span>
+                            <br>
+                            <a href="https://shoesbyalexandra.com/" target="_blank" class="project-link">
+                                Ver sitio web <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <!-- Espacio para imagen de Incolor EC -->
+                            Imagen del proyecto
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Incolor EC</h3>
+                            <p class="project-description">
+                                Portal web para empresa de servicios de impresión y diseño gráfico. 
+                                Incluye portafolio de trabajos y sistema de cotizacio
