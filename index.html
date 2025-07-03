@@ -590,15 +590,18 @@
 
         .modal-content {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 90%;
-            max-height: 90%;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            transform: none;
             background: var(--card-bg);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-content img {
