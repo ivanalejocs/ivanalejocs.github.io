@@ -147,7 +147,9 @@
         .hero {
             padding: 120px 0 80px;
             text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(-45deg, #667eea, #764ba2, #ff6b6b, #4ecdc4);
+            background-size: 400% 400%;
+            animation: gradientBackground 12s ease infinite;
             color: white;
             position: relative;
             overflow: hidden;
@@ -752,6 +754,11 @@
                 max-height: 95%;
                 padding: 10px;
             }
+        }
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
     </style>
 </head>
