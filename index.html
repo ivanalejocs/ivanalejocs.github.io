@@ -147,8 +147,10 @@
         .hero {
             padding: 120px 0 80px;
             text-align: center;
-            background: linear-gradient(-45deg, #667eea, #764ba2, #ff6b6b, #4ecdc4);
-            background-size: 400% 400%;
+            background: 
+                linear-gradient(-45deg, rgba(0, 39, 255, 0.65), rgba(50, 255, 0, 0.3)),
+                url('images/hero.jpg') no-repeat center center / cover;
+            background-size: 400% 400%, cover;
             animation: gradientBackground 12s ease infinite;
             color: white;
             position: relative;
@@ -162,8 +164,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
+            background: url('data:image/svg+xml,...');
             background-size: cover;
+            opacity: 0.15; /* antes estaba en 1 */
+            backdrop-filter: blur(5px); /* nuevo desenfoque */
         }
 
         .hero-content {
