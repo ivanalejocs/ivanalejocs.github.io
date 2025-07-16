@@ -1,0 +1,524 @@
+import React, { useState } from 'react';
+import { 
+  Phone, 
+  Mail, 
+  MapPin, 
+  Clock, 
+  Heart, 
+  Star,
+  Menu,
+  X,
+  CheckCircle,
+  Users,
+  Home,
+  Camera,
+  Flower,
+  Shield
+} from 'lucide-react';
+
+const FunerariaWebsite = () => {
+  const [currentPage, setCurrentPage] = useState('home');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navigation = [
+    { name: 'Inicio', id: 'home', icon: Home },
+    { name: 'Servicios', id: 'services', icon: Heart },
+    { name: 'Salas', id: 'rooms', icon: Camera },
+    { name: 'Historia', id: 'history', icon: Users },
+    { name: 'Contacto', id: 'contact', icon: Phone }
+  ];
+
+  const services = [
+    {
+      title: "Servicios Funerarios Completos",
+      description: "Ofrecemos un servicio integral que incluye preparación, velación y sepultura, con el máximo respeto y profesionalismo.",
+      image: "https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?w=400&h=300&fit=crop"
+    },
+    {
+      title: "Cremación",
+      description: "Servicios de cremación con opciones personalizadas, incluyendo urnas conmemorativas y ceremonias especiales.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop"
+    },
+    {
+      title: "Flores y Coronas",
+      description: "Arreglos florales únicos y coronas conmemorativas diseñadas especialmente para honrar la memoria.",
+      image: "https://images.unsplash.com/photo-1463320726281-696a485928c7?w=400&h=300&fit=crop"
+    },
+    {
+      title: "Traslados",
+      description: "Servicio de traslado nacional e internacional con todos los permisos y documentación necesaria.",
+      image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop"
+    },
+    {
+      title: "Ataúdes y Urnas",
+      description: "Amplia selección de ataúdes y urnas de diferentes materiales y estilos, desde económicos hasta premium.",
+      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
+    },
+    {
+      title: "Planes de Previsión",
+      description: "Planes que permiten planificar con anticipación y aliviar la carga económica en momentos difíciles.",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop"
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: "María González",
+      text: "En un momento tan difícil, el equipo nos brindó el apoyo que necesitábamos. Eternamente agradecidos.",
+      rating: 5
+    },
+    {
+      name: "Carlos Rodríguez", 
+      text: "Excelente atención y servicio. Nos acompañaron en cada paso con mucha sensibilidad y respeto.",
+      rating: 5
+    },
+    {
+      name: "Ana Martínez",
+      text: "Recomiendo completamente sus servicios. La calidad y el trato humano son excepcionales.",
+      rating: 5
+    }
+  ];
+
+  const HomePage = () => (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-purple-900/20"></div>
+        
+        <div className="relative z-10 flex items-center justify-center h-full">
+          <div className="text-center text-white px-4">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl">
+              Funeraria <span className="text-blue-300">La América</span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+              Acompañándote con respeto y dignidad en los momentos más difíciles
+            </p>
+            <button 
+              onClick={() => setCurrentPage('contact')}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+            >
+              Contáctanos
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-8 text-gray-800">Sobre Nosotros</h2>
+            <p className="text-lg text-gray-600 mb-12 leading-relaxed">
+              Funeraria La América es una empresa familiar con más de 30 años de experiencia en el sector funerario. 
+              Nos dedicamos a brindar servicios integrales de alta calidad, acompañando a las familias en sus momentos 
+              más difíciles con profesionalismo, respeto y calidez humana.
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center p-6">
+                <Heart className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Compromiso</h3>
+                <p className="text-gray-600">Dedicación total a cada familia que confía en nosotros</p>
+              </div>
+              <div className="text-center p-6">
+                <Shield className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Experiencia</h3>
+                <p className="text-gray-600">Más de tres décadas de servicio profesional</p>
+              </div>
+              <div className="text-center p-6">
+                <Users className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Familia</h3>
+                <p className="text-gray-600">Tratamos a cada cliente como parte de nuestra familia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Preview */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Nuestros Servicios</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {services.slice(0, 3).map((service, index) => (
+              <div key={index} className="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow">
+                <img src={service.image} alt={service.title} className="w-full h-48 object-cover rounded-lg mb-4" />
+                <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-4">{service.description}</p>
+                <button 
+                  onClick={() => setCurrentPage('services')}
+                  className="text-blue-600 hover:text-blue-800 font-medium"
+                >
+                  Ver más →
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">Testimonios</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white rounded-lg p-6 shadow-lg">
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-4 italic">"{testimonial.text}"</p>
+                <p className="font-semibold text-gray-800">- {testimonial.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+
+  const ServicesPage = () => (
+    <div className="min-h-screen py-20 bg-gray-50">
+      <div className="container mx-auto px-6">
+        <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">Nuestros Servicios</h1>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <img src={service.image} alt={service.title} className="w-full h-48 object-cover" />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">{service.title}</h3>
+                <p className="text-gray-600">{service.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
+  const RoomsPage = () => (
+    <div className="min-h-screen py-20 bg-gray-50">
+      <div className="container mx-auto px-6">
+        <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">Nuestras Salas de Velación</h1>
+        <div className="grid md:grid-cols-2 gap-12">
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop" alt="Sala Principal" className="w-full h-64 object-cover" />
+            <div className="p-8">
+              <h2 className="text-2xl font-semibold mb-4 text-gray-800">Sala Principal</h2>
+              <p className="text-gray-600 mb-6">
+                Nuestra sala principal ofrece un ambiente sereno y espacioso, con capacidad para 100 personas. 
+                Cuenta con aire acondicionado, sistema de sonido profesional y áreas de descanso cómodas.
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <span>Capacidad: 100 personas</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <span>Aire acondicionado</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <span>Sistema de sonido</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop" alt="Sala Íntima" className="w-full h-64 object-cover" />
+            <div className="p-8">
+              <h2 className="text-2xl font-semibold mb-4 text-gray-800">Sala Íntima</h2>
+              <p className="text-gray-600 mb-6">
+                Diseñada para ceremonias más pequeñas, esta sala ofrece un ambiente cálido y acogedor 
+                con capacidad para 50 personas, ideal para despedidas más privadas.
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <span>Capacidad: 50 personas</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <span>Ambiente acogedor</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                  <span>Espacio privado</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const HistoryPage = () => (
+    <div className="min-h-screen py-20 bg-gray-50">
+      <div className="container mx-auto px-6 max-w-4xl">
+        <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">Nuestra Historia</h1>
+        
+        <div className="space-y-8">
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="flex items-center mb-6">
+              <div className="w-4 h-4 bg-blue-600 rounded-full mr-4"></div>
+              <h2 className="text-2xl font-semibold text-gray-800">Fundación (1990)</h2>
+            </div>
+            <p className="text-gray-700 leading-relaxed">
+              Funeraria La América fue fundada en 1990 por la familia Martínez, con la visión de brindar servicios 
+              funerarios de calidad con un toque humano y familiar. Comenzamos como una pequeña empresa local.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="flex items-center mb-6">
+              <div className="w-4 h-4 bg-blue-600 rounded-full mr-4"></div>
+              <h2 className="text-2xl font-semibold text-gray-800">Expansión (2005)</h2>
+            </div>
+            <p className="text-gray-700 leading-relaxed">
+              En 2005, expandimos nuestras instalaciones agregando una segunda sala de velación y modernizando 
+              nuestros servicios. Incorporamos nuevas tecnologías y ampliamos nuestro equipo profesional.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <div className="flex items-center mb-6">
+              <div className="w-4 h-4 bg-blue-600 rounded-full mr-4"></div>
+              <h2 className="text-2xl font-semibold text-gray-800">Presente (2025)</h2>
+            </div>
+            <p className="text-gray-700 leading-relaxed">
+              Hoy somos reconocidos como una de las funerarias más respetadas de la región. Hemos servido a más 
+              de 5,000 familias con nuestro compromiso de excelencia y tradición familiar.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const ContactPage = () => (
+    <div className="min-h-screen py-20 bg-gray-50">
+      <div className="container mx-auto px-6">
+        <h1 className="text-4xl font-bold text-center mb-12 text-gray-800">Contáctanos</h1>
+        
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <h2 className="text-2xl font-semibold mb-6 text-gray-800">Información de Contacto</h2>
+            
+            <div className="space-y-6">
+              <div className="flex items-center">
+                <Phone className="w-6 h-6 text-blue-600 mr-4" />
+                <div>
+                  <p className="font-semibold text-gray-800">Teléfonos</p>
+                  <p className="text-gray-600">+593 2 234-5678</p>
+                  <p className="text-gray-600">+593 99 123-4567 (24h)</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center">
+                <Mail className="w-6 h-6 text-blue-600 mr-4" />
+                <div>
+                  <p className="font-semibold text-gray-800">Email</p>
+                  <p className="text-gray-600">info@funerarialaamerica.com</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center">
+                <MapPin className="w-6 h-6 text-blue-600 mr-4" />
+                <div>
+                  <p className="font-semibold text-gray-800">Dirección</p>
+                  <p className="text-gray-600">Av. Principal 123, San Miguel</p>
+                  <p className="text-gray-600">Cotopaxi, Ecuador</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center">
+                <Clock className="w-6 h-6 text-blue-600 mr-4" />
+                <div>
+                  <p className="font-semibold text-gray-800">Horarios</p>
+                  <p className="text-gray-600">Lun-Vie: 8:00 AM - 6:00 PM</p>
+                  <p className="text-gray-600">Sáb: 9:00 AM - 4:00 PM</p>
+                  <p className="text-gray-600">Emergencias: 24 horas</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <h2 className="text-2xl font-semibold mb-6 text-gray-800">Envíanos un mensaje</h2>
+            <div className="space-y-6">
+              <div>
+                <label className="block text-gray-700 font-medium mb-2">Nombre completo</label>
+                <input 
+                  type="text" 
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Tu nombre completo"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-gray-700 font-medium mb-2">Email</label>
+                <input 
+                  type="email" 
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="tu@email.com"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-gray-700 font-medium mb-2">Mensaje</label>
+                <textarea 
+                  rows={4}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Tu mensaje..."
+                ></textarea>
+              </div>
+              
+              <button 
+                onClick={() => alert('Mensaje enviado correctamente')}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold transition-colors"
+              >
+                Enviar Mensaje
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderCurrentPage = () => {
+    switch(currentPage) {
+      case 'home': return <HomePage />;
+      case 'services': return <ServicesPage />;
+      case 'rooms': return <RoomsPage />;
+      case 'history': return <HistoryPage />;
+      case 'contact': return <ContactPage />;
+      default: return <HomePage />;
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Navigation */}
+      <nav className="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div className="container mx-auto px-6">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <Flower className="w-8 h-8 text-blue-600 mr-3" />
+              <span className="text-xl font-bold text-gray-800">Funeraria La América</span>
+            </div>
+            
+            <div className="hidden md:flex space-x-8">
+              {navigation.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => setCurrentPage(item.id)}
+                  className={`flex items-center px-3 py-2 rounded-lg transition-colors ${
+                    currentPage === item.id 
+                      ? 'bg-blue-600 text-white' 
+                      : 'text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  <item.icon className="w-4 h-4 mr-2" />
+                  {item.name}
+                </button>
+              ))}
+            </div>
+
+            <button
+              className="md:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t">
+            <div className="px-6 py-4 space-y-2">
+              {navigation.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    setCurrentPage(item.id);
+                    setIsMenuOpen(false);
+                  }}
+                  className={`w-full flex items-center px-3 py-2 rounded-lg ${
+                    currentPage === item.id 
+                      ? 'bg-blue-600 text-white' 
+                      : 'text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  <item.icon className="w-4 h-4 mr-2" />
+                  {item.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+
+      <main className="pt-16">
+        {renderCurrentPage()}
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white py-12">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center mb-4">
+                <Flower className="w-8 h-8 text-blue-400 mr-3" />
+                <span className="text-xl font-bold">Funeraria La América</span>
+              </div>
+              <p className="text-gray-400">
+                Acompañándote con respeto y dignidad desde 1990.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Servicios</h3>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li>Servicios Funerarios</li>
+                <li>Cremación</li>
+                <li>Traslados</li>
+                <li>Planes de Previsión</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Contacto</h3>
+              <div className="space-y-2 text-gray-400 text-sm">
+                <p>+593 2 234-5678</p>
+                <p>info@funerarialaamerica.com</p>
+                <p>Av. Principal 123, San Miguel</p>
+              </div>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Horarios</h3>
+              <div className="space-y-2 text-gray-400 text-sm">
+                <p>Lun-Vie: 8:00 AM - 6:00 PM</p>
+                <p>Sáb: 9:00 AM - 4:00 PM</p>
+                <p>Emergencias: 24 horas</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2025 Funeraria La América. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default FunerariaWebsite;
