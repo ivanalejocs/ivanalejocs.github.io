@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inmobiliaria Premium - Desarrollos Exclusivos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(26, 35, 44, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a232c;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        header.scrolled .logo {
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #1a232c;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        header.scrolled .nav-links a {
+            color: #fff;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #1a232c;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        header.scrolled .menu-toggle span {
+            background: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #1a232c 0%, #2c3e50 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="grad"><stop offset="0%" stop-color="%23d4af37" stop-opacity="0.1"/><stop offset="100%" stop-color="%23d4af37" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="3" fill="url(%23grad)"/><circle cx="800" cy="300" r="2" fill="url(%23grad)"/><circle cx="400" cy="700" r="2.5" fill="url(%23grad)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+            color: #1a232c;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #1a232c;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a232c;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(45deg, #1a232c, #2c3e50);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a232c;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1a232c;
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: #e8f5e8;
+            color: #27ae60;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-status.en-construccion {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        /* Contact Form */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #d4af37;
+            margin-right: 1rem;
+            width: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #1a232c;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+            color: #1a232c;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a232c;
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            height: 150px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .project-details {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .detail-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-item h4 {
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 3rem 5%;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+            z-index: 1001;
+            transition: width 0.3s ease;
+        }
+
+        /* Hidden sections */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="#" class="logo">InmobiliaraPremium</a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('inicio')">Inicio</a></li>
+                <li><a href="#" onclick="showSection('proyectos')">Proyectos</a></li>
+                <li><a href="#" onclick="showSection('nosotros')">Nosotros</a></li>
+                <li><a href="#" onclick="showSection('contacto')">Contacto</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Inicio Section -->
+    <section id="inicio" class="section-container">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Desarrollos Inmobiliarios Exclusivos</h1>
+                <p>Creamos espacios únicos donde los sueños se convierten en realidad</p>
+                <a href="#" class="cta-button" onclick="showSection('proyectos')">Explorar Proyectos</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Bienvenido a Inmobiliaria Premium</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 3rem;">
+                Somos una empresa líder en el desarrollo inmobiliario, especializada en crear espacios residenciales y comerciales de alta calidad que transforman la manera de vivir y trabajar. Con más de 15 años de experiencia en el mercado, nos hemos consolidado como referente en innovación, diseño y excelencia constructiva.
+            </p>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Proyectos Residenciales</h3>
+                    <p>Desarrollamos complejos residenciales modernos con amenidades de lujo, diseñados para ofrecer confort y calidad de vida excepcional.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Desarrollos Comerciales</h3>
+                    <p>Creamos espacios comerciales estratégicamente ubicados, perfectos para impulsar tu negocio con diseño funcional y moderna infraestructura.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Calidad Garantizada</h3>
+                    <p>Todos nuestros proyectos cuentan con los más altos estándares de calidad, materiales premium y tecnología de construcción avanzada.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; text-align: center;">
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #555; max-width: 900px; margin: 0 auto;">
+                    En Inmobiliaria Premium entendemos que cada proyecto es único y especial. Por eso, nos enfocamos en crear desarrollos que no solo cumplan con las expectativas de nuestros clientes, sino que las superen. Nuestro equipo de arquitectos, ingenieros y diseñadores trabaja de la mano con tecnología de vanguardia para ofrecer espacios que combinan funcionalidad, estética y sostenibilidad. Cada detalle es cuidadosamente planificado para garantizar que nuestros residentes y usuarios disfruten de una experiencia extraordinaria en cada uno de nuestros desarrollos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos Section -->
+    <section id="proyectos" class="section-container hidden">
+        <div class="section">
+            <h2>Nuestros Proyectos</h2>
+            <div class="projects-grid">
+                <div class="project-card" onclick="openProjectModal('Torre Platinum')">
+                    <div class="project-image">Torre Platinum</div>
+                    <div class="project-info">
+                        <h3>Torre Platinum</h3>
+                        <span class="project-status">Terminado</span>
+                        <p>Exclusivo complejo residencial de 25 pisos con amenidades de lujo.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openProjectModal('Residencial Vista Dorada')">
+                    <div class="project-image">Residencial Vista Dorada</div>
+                    <div class="project-info">
+                        <h3>Residencial Vista Dorada</h3>
+                        <span class="project-status en-construccion">En Construcción</span>
+                        <p>Moderno conjunto residencial con diseño contemporáneo.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openProjectModal('Plaza Central')">
+                    <div class="project-image">Plaza Central</div>
+                    <div class="project-info">
+                        <h3>Plaza Central</h3>
+                        <span class="project-status">Terminado</span>
+                        <p>Centro comercial con locales comerciales y oficinas.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openProjectModal('Condominio Los Álamos')">
+                    <div class="project-image">Condominio Los Álamos</div>
+                    <div class="project-info">
+                        <h3>Condominio Los Álamos</h3>
+                        <span class="project-status en-construccion">En Construcción</span>
+                        <p>Casas unifamiliares con jardín privado y seguridad 24/7.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openProjectModal('Edificio Empresarial')">
+                    <div class="project-image">Edificio Empresarial</div>
+                    <div class="project-info">
+                        <h3>Edificio Empresarial</h3>
+                        <span class="project-status">Terminado</span>
+                        <p>Modernas oficinas corporativas con tecnología avanzada.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openProjectModal('Residencial Océano')">
+                    <div class="project-image">Residencial Océano</div>
+                    <div class="project-info">
+                        <h3>Residencial Océano</h3>
+                        <span class="project-status en-construccion">En Construcción</span>
+                        <p>Apartamentos frente al mar con vista panorámica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros Section -->
+    <section id="nosotros" class="section-container hidden">
+        <div class="section">
+            <h2>Acerca de Nosotros</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 style="color: #d4af37; margin-bottom: 1rem;">Nuestra Historia</h3>
+                    <p>
+                        Fundada en 2009, Inmobiliaria Premium nació con la visión de transformar el sector inmobiliario mediante la creación de espacios únicos y funcionales. Comenzamos como una pequeña empresa familiar y hoy somos reconocidos como líderes en el desarrollo de proyectos residenciales y comerciales de alta gama.
+                    </p>
+                    
+                    <h3 style="color: #d4af37; margin: 2rem 0 1rem;">Nuestra Misión</h3>
+                    <p>
+                        Desarrollar proyectos inmobiliarios excepcionales que mejoren la calidad de vida de nuestros clientes, combinando diseño innovador, tecnología avanzada y sostenibilidad ambiental en cada uno de nuestros desarrollos.
+                    </p>
+                    
+                    <h3 style="color: #d4af37; margin: 2rem 0 1rem;">Nuestra Visión</h3>
+                    <p>
+                        Ser la empresa inmobiliaria líder en la región, reconocida por la excelencia en nuestros proyectos, la innovación en el diseño y nuestro compromiso con el desarrollo sostenible y la satisfacción del cliente.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <i class="fas fa-building" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                    <br>
+                    Edificio Corporativo
+                </div>
+            </div>
+
+            <div class="cards-grid" style="margin-top: 4rem;">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Nuestro Equipo</h3>
+                    <p>Contamos con más de 50 profesionales especializados en arquitectura, ingeniería, diseño y construcción, todos comprometidos con la excelencia.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Reconocimientos</h3>
+                    <p>Hemos recibido múltiples premios por nuestros proyectos innovadores y nuestro compromiso con la calidad y el diseño sostenible.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sostenibilidad</h3>
+                    <p>Implementamos prácticas de construcción sostenible y tecnologías verdes en todos nuestros proyectos para proteger el medio ambiente.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; text-align: center; background: #f8f9fa; padding: 3rem; border-radius: 20px;">
+                <h3 style="color: #1a232c; margin-bottom: 1.5rem;">Nuestros Valores</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: left;">
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 0.5rem;">Excelencia</h4>
+                        <p>Buscamos la perfección en cada detalle de nuestros proyectos.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 0.5rem;">Innovación</h4>
+                        <p>Adoptamos las últimas tecnologías y tendencias del mercado.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 0.5rem;">Integridad</h4>
+                        <p>Actuamos con honestidad y transparencia en todas nuestras operaciones.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #d4af37; margin-bottom: 0.5rem;">Compromiso</h4>
+                        <p>Nos dedicamos completamente a superar las expectativas de nuestros clientes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="section-container hidden">
+        <div class="section">
+            <h2>Contacto</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 style="color: #1a232c; margin-bottom: 2rem;">Información de Contacto</h3>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Dirección:</strong><br>
+                            Av. Principal 123, Torre Empresarial<br>
+                            Piso 15, Oficina 1501<br>
+                            Machala, El Oro, Ecuador
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Teléfonos:</strong><br>
+                            +593 7 293-4567<br>
+                            +593 7 293-4568
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Correos:</strong><br>
+                            info@inmobiliariapremium.com<br>
+                            ventas@inmobiliariapremium.com
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <strong>WhatsApp:</strong><br>
+                            +593 99 123-4567<br>
+                            +593 99 123-4568
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Horarios:</strong><br>
+                            Lunes - Viernes: 8:00 AM - 6:00 PM<br>
+                            Sábados: 9:00 AM - 4:00 PM
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3 style="color: #1a232c; margin-bottom: 2rem;">Formulario de Contacto</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="nombres">Nombres Completos *</label>
+                            <input type="text" id="nombres" name="nombres" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefono">Teléfono *</label>
+                            <input type="tel" id="telefono" name="telefono" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="propiedad">Propiedad de Interés</label>
+                            <select id="propiedad" name="propiedad">
+                                <option value="">Seleccionar proyecto...</option>
+                                <option value="Torre Platinum">Torre Platinum</option>
+                                <option value="Residencial Vista Dorada">Residencial Vista Dorada</option>
+                                <option value="Plaza Central">Plaza Central</option>
+                                <option value="Condominio Los Álamos">Condominio Los Álamos</option>
+                                <option value="Edificio Empresarial">Edificio Empresarial</option>
+                                <option value="Residencial Océano">Residencial Océano</option>
+                                <option value="Información General">Información General</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos sobre tu consulta..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Inmobiliaria Premium. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            const scrollProgress = document.querySelector('.scroll-progress');
+            
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Scroll progress
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = progress + '%';
+        });
+
+        // Navigation
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section-container');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // Show selected section
+            document.getElementById(sectionName).classList.remove('hidden');
+            
+            // Add animation
+            document.getElementById(sectionName).classList.add('fade-in-up');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Project modal
+        const projectData = {
+            'Torre Platinum': {
+                status: 'Terminado',
+                description: 'Exclusivo complejo residencial de 25 pisos ubicado en el corazón de la ciudad, diseñado para ofrecer el máximo lujo y comodidad.',
+                features: [
+                    'Piscina infinity en el piso 20',
+                    'Gimnasio completamente equipado',
+                    'Spa y área de relajación',
+                    'Salón de eventos privado',
+                    'Seguridad 24/7 con circuito cerrado',
+                    'Estacionamiento subterráneo',
+                    'Áreas verdes y jardines',
+                    'Concierge y servicio de valet'
+                ],
+                apartments: [
+                    { type: 'Estudio', size: '45 m²', bathrooms: 1, bedrooms: 0, price: 'Desde $85,000' },
+                    { type: 'Apartamento 1 dormitorio', size: '65 m²', bathrooms: 1, bedrooms: 1, price: 'Desde $120,000' },
+                    { type: 'Apartamento 2 dormitorios', size: '85 m²', bathrooms: 2, bedrooms: 2, price: 'Desde $165,000' },
+                    { type: 'Apartamento 3 dormitorios', size: '120 m²', bathrooms: 3, bedrooms: 3, price: 'Desde $245,000' },
+                    { type: 'Penthouse', size: '200 m²', bathrooms: 4, bedrooms: 4, price: 'Desde $450,000' }
+                ]
+            },
+            'Residencial Vista Dorada': {
+                status: 'En Construcción',
+                description: 'Moderno conjunto residencial con diseño contemporáneo y espacios abiertos, pensado para familias modernas que buscan comodidad y estilo.',
+                features: [
+                    'Piscina familiar y piscina para niños',
+                    'Cancha de tenis y fútbol',
+                    'Playground para niños',
+                    'Área de BBQ y eventos',
+                    'Gimnasio al aire libre',
+                    'Senderos para caminar',
+                    'Seguridad perimetral',
+                    'Estacionamiento para visitantes'
+                ],
+                apartments: [
+                    { type: 'Apartamento 2 dormitorios', size: '70 m²', bathrooms: 2, bedrooms: 2, price: 'Desde $95,000' },
+                    { type: 'Apartamento 3 dormitorios', size: '95 m²', bathrooms: 2, bedrooms: 3, price: 'Desde $135,000' },
+                    { type: 'Apartamento 4 dormitorios', size: '130 m²', bathrooms: 3, bedrooms: 4, price: 'Desde $185,000' }
+                ]
+            },
+            'Plaza Central': {
+                status: 'Terminado',
+                description: 'Centro comercial moderno con locales comerciales y oficinas, estratégicamente ubicado en zona comercial de alto tráfico.',
+                features: [
+                    'Locales comerciales de diferentes tamaños',
+                    'Oficinas corporativas',
+                    'Área de food court',
+                    'Estacionamiento de 3 niveles',
+                    'Sistema de aire acondicionado central',
+                    'Ascensores de alta velocidad',
+                    'Seguridad 24/7',
+                    'Generador de emergencia'
+                ],
+                apartments: [
+                    { type: 'Local comercial pequeño', size: '25 m²', bathrooms: 1, bedrooms: 0, price: 'Desde $45,000' },
+                    { type: 'Local comercial mediano', size: '50 m²', bathrooms: 1, bedrooms: 0, price: 'Desde $85,000' },
+                    { type: 'Local comercial grande', size: '100 m²', bathrooms: 2, bedrooms: 0, price: 'Desde $165,000' },
+                    { type: 'Oficina pequeña', size: '30 m²', bathrooms: 1, bedrooms: 0, price: 'Desde $55,000' },
+                    { type: 'Oficina mediana', size: '60 m²', bathrooms: 1, bedrooms: 0, price: 'Desde $95,000' },
+                    { type: 'Oficina grande', size: '120 m²', bathrooms: 2, bedrooms: 0, price: 'Desde $185,000' }
+                ]
+            },
+            'Condominio Los Álamos': {
+                status: 'En Construcción',
+                description: 'Exclusivo conjunto de casas unifamiliares con jardín privado, diseñadas para ofrecer privacidad y tranquilidad en un ambiente familiar.',
+                features: [
+                    'Casas con jardín privado',
+                    'Garaje para 2 vehículos',
+                    'Área social común',
+                    'Piscina comunitaria',
+                    'Cancha múltiple',
+                    'Parque infantil',
+                    'Seguridad 24/7',
+                    'Portería con control de acceso'
+                ],
+                apartments: [
+                    { type: 'Casa 3 dormitorios', size: '120 m²', bathrooms: 3, bedrooms: 3, price: 'Desde $185,000' },
+                    { type: 'Casa 4 dormitorios', size: '150 m²', bathrooms: 4, bedrooms: 4, price: 'Desde $235,000' },
+                    { type: 'Casa 5 dormitorios', size: '200 m²', bathrooms: 5, bedrooms: 5, price: 'Desde $325,000' }
+                ]
+            },
+            'Edificio Empresarial': {
+                status: 'Terminado',
+                description: 'Moderno edificio corporativo con oficinas de alta gama, equipado con la última tecnología para empresas que buscan prestigio y funcionalidad.',
+                features: [
+                    'Oficinas con vista panorámica',
+                    'Salas de reuniones equipadas',
+                    'Auditorio para 100 personas',
+                    'Cafetería corporativa',
+                    'Estacionamiento exclusivo',
+                    'Sistema de seguridad avanzado',
+                    'Internet de alta velocidad',
+                    'Recepción y lobby ejecutivo'
+                ],
+                apartments: [
+                    { type: 'Oficina ejecutiva', size: '40 m²', bathrooms: 1, bedrooms: 0, price: 'Desde $75,000' },
+                    { type: 'Oficina corporativa', size: '80 m²', bathrooms: 1, bedrooms: 0, price: 'Desde $135,000' },
+                    { type: 'Suite empresarial', size: '150 m²', bathrooms: 2, bedrooms: 0, price: 'Desde $245,000' },
+                    { type: 'Piso completo', size: '300 m²', bathrooms: 4, bedrooms: 0, price: 'Desde $485,000' }
+                ]
+            },
+            'Residencial Océano': {
+                status: 'En Construcción',
+                description: 'Exclusivos apartamentos frente al mar con vista panorámica al océano, diseñados para quienes buscan una experiencia de vida única junto al mar.',
+                features: [
+                    'Vista panorámica al océano',
+                    'Acceso directo a la playa',
+                    'Piscina infinity frente al mar',
+                    'Restaurante y bar en la playa',
+                    'Spa con tratamientos marinos',
+                    'Deportes acuáticos',
+                    'Servicio de concierge',
+                    'Estacionamiento subterráneo'
+                ],
+                apartments: [
+                    { type: 'Apartamento 1 dormitorio vista mar', size: '75 m²', bathrooms: 1, bedrooms: 1, price: 'Desde $195,000' },
+                    { type: 'Apartamento 2 dormitorios vista mar', size: '105 m²', bathrooms: 2, bedrooms: 2, price: 'Desde $285,000' },
+                    { type: 'Apartamento 3 dormitorios vista mar', size: '145 m²', bathrooms: 3, bedrooms: 3, price: 'Desde $385,000' },
+                    { type: 'Penthouse frente al mar', size: '250 m²', bathrooms: 4, bedrooms: 4, price: 'Desde $695,000' }
+                ]
+            }
+        };
+
+        function openProjectModal(projectName) {
+            const modal = document.getElementById('projectModal');
+            const modalContent = document.getElementById('modalContent');
+            const project = projectData[projectName];
+            
+            if (!project) return;
+
+            const statusClass = project.status === 'Terminado' ? '' : 'en-construccion';
+            
+            modalContent.innerHTML = `
+                <h2 style="color: #1a232c; margin-bottom: 1rem;">${projectName}</h2>
+                <span class="project-status ${statusClass}" style="margin-bottom: 2rem; display: inline-block;">${project.status}</span>
+                
+                <div class="project-gallery">
+                    <div class="gallery-item">Fachada Principal</div>
+                    <div class="gallery-item">Lobby de Entrada</div>
+                    <div class="gallery-item">Área Social</div>
+                    <div class="gallery-item">Piscina</div>
+                    <div class="gallery-item">Gimnasio</div>
+                    <div class="gallery-item">Apartamento Modelo</div>
+                </div>
+                
+                <div style="margin: 2rem 0;">
+                    <h3 style="color: #d4af37; margin-bottom: 1rem;">Descripción</h3>
+                    <p style="line-height: 1.6; color: #555;">${project.description}</p>
+                </div>
+                
+                <div style="margin: 2rem 0;">
+                    <h3 style="color: #d4af37; margin-bottom: 1rem;">Características y Amenidades</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem;">
+                        ${project.features.map(feature => `
+                            <div style="padding: 0.5rem; background: #f8f9fa; border-radius: 5px; font-size: 0.9rem;">
+                                <i class="fas fa-check" style="color: #27ae60; margin-right: 0.5rem;"></i>
+                                ${feature}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div class="project-details">
+                    <h3 style="color: #d4af37; margin-bottom: 1rem;">Opciones Disponibles</h3>
+                    <div class="details-grid">
+                        ${project.apartments.map(apt => `
+                            <div class="detail-item">
+                                <h4>${apt.type}</h4>
+                                <p><strong>Área:</strong> ${apt.size}</p>
+                                <p><strong>Dormitorios:</strong> ${apt.bedrooms}</p>
+                                <p><strong>Baños:</strong> ${apt.bathrooms}</p>
+                                <p style="color: #d4af37; font-weight: bold;">${apt.price}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div style="margin-top: 2rem; text-align: center;">
+                    <button onclick="showSection('contacto'); closeModal();" style="background: linear-gradient(45deg, #d4af37, #f4d03f); color: #1a232c; padding: 1rem 2rem; border: none; border-radius: 50px; font-weight: 600; cursor: pointer;">
+                        Solicitar Más Información
+                    </button>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with X button
+        document.querySelector('.close').onclick = closeModal;
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+            
+            // Here you would typically send the data to your server
+            console.log('Form data:', data);
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize with home section
+        showSection('inicio');
+    </script>
+</body>
+</html>
