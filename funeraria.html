@@ -44,6 +44,17 @@
             font-weight: bold;
             color: #f0f0f0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+            max-width: 100%;
+            object-fit: fit;
+            padding: 0 10rem 0 0;
         }
 
         .nav-links {
@@ -184,13 +195,14 @@
         /* Main Content */
         .page {
             display: none;
-            padding: 150px 0 50px;
+            padding: 0;
         }
 
         .page.active {
             display: block;
-            padding: 0;
+            padding: 0 3rem 0;
         }
+
 
         .container {
             max-width: 1200px;
@@ -530,7 +542,9 @@
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">Funeraria La América</div>
+            <div class="logo">
+                <img src="/fune/media/header.png" alt="Logo Funeraria La América">
+            </div>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#" onclick="showPage('home')" class="active">Inicio</a></li>
@@ -547,7 +561,7 @@
         <!-- Hero Section -->
         <section class="hero">
             <video class="hero-video" autoplay muted loop>
-                <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4">
+                <source src="/fune/media/vid.mp4" type="video/mp4">
                 <!-- Fallback for browsers that don't support video -->
                 Su navegador no soporta video HTML5.
             </video>
@@ -571,7 +585,7 @@
         <!-- Servicios Resumen -->
         <section class="section">
             <div class="container">
-                <h2>Nuestros Servicios</h2>
+                <h2 style="text-align: center;">Nuestros Servicios</h2>
                 <div class="cards-grid">
                     <div class="card">
                         <div class="card-icon">⚱️</div>
@@ -600,7 +614,7 @@
         <!-- Testimonios -->
         <section class="testimonials">
             <div class="container">
-                <h2 style="color: white; margin-bottom: 3rem;">Lo que dicen nuestros clientes</h2>
+                <h2 style="color: white; margin-bottom: 3rem; text-align: center;">Lo que dicen nuestros clientes</h2>
                 <div class="testimonial">
                     <p>"En el momento más difícil de nuestras vidas, el equipo de Funeraria La América nos brindó el apoyo y la profesionalidad que necesitábamos. Su trato humano y atención al detalle hicieron la diferencia."</p>
                     <div class="testimonial-author">- María González</div>
@@ -619,10 +633,17 @@
 
     <!-- Servicios Page -->
     <div id="servicios" class="page">
-        <div class="container">
-            <h2>Nuestros Servicios</h2>
+        <section class="hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="/fune/media/vid.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Nuestros Servicios</h1>
             <p>Ofrecemos una amplia gama de servicios funerarios diseñados para honrar la memoria de sus seres queridos con la dignidad y el respeto que merecen.</p>
-            
+        </div>
+    </section>
+
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-image">⚱️</div>
@@ -677,10 +698,16 @@
 
     <!-- Salas Page -->
     <div id="salas" class="page">
-        <div class="container">
-            <h2>Nuestras Salas de Velación</h2>
+        <section class="hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="/fune/media/vid.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Nuestras Salas de Velación</h1>
             <p>Disponemos de espacios elegantes y confortables, diseñados para brindar tranquilidad y recogimiento en estos momentos tan especiales.</p>
-            
+        </div>
+        </section>
             <div class="salas-grid">
                 <div class="sala-card">
                     <div class="sala-image">🏛️</div>
@@ -719,9 +746,17 @@
 
     <!-- Historia Page -->
     <div id="historia" class="page">
-        <div class="container">
-            <h2>Nuestra Historia</h2>
+        <section class="hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="/fune/media/vid.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Nuestra Historia</h1>
+        </div>
+        </section>
             <div class="section">
+                <br><br>
                 <p>Funeraria La América nació en 1993 como un proyecto familiar con una visión clara: brindar servicios funerarios de calidad con un trato humano excepcional. Fundada por Don Miguel Herrera y su esposa Doña Carmen Vásquez, nuestra empresa comenzó como una pequeña funeraria de barrio que se distinguía por su atención personalizada y su compromiso con las familias de la comunidad.</p>
                 
                 <p>Durante nuestros primeros años, nos enfocamos en construir relaciones sólidas con nuestros clientes, entendiendo que cada despedida es única y merece un tratamiento especial. Esta filosofía nos permitió crecer gradualmente, ganándonos la confianza de la comunidad a través de nuestro servicio profesional y nuestro genuino compromiso con el bienestar de las familias en duelo.</p>
@@ -743,9 +778,17 @@
 
     <!-- Contacto Page -->
     <div id="contacto" class="page">
+        <section class="hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="/fune/media/vid.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
         <div class="container">
-            <h2>Contacto</h2>
+            <h1>Contacto</h1>
             <p>Estamos aquí para atenderle las 24 horas del día, los 365 días del año. Contáctenos cuando nos necesite.</p>
+            </div>
+        </section>
             
             <div class="contact-grid">
                 <div class="contact-form">
@@ -777,24 +820,28 @@
                         <div class="contact-icon">📞</div>
                         <div>
                             <strong>Teléfono 24 horas</strong><br>
-                            +593 2 234-5678<br>
-                            +593 99 876-5432
+                            <a href="tel:+593999999999" class="call-button">0999999999</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">📧</div>
                         <div>
                             <strong>Correo electrónico</strong><br>
-                            info@funerarialaamerica.com<br>
-                            emergencias@funerarialaamerica.com
+                            <a href="mailto:info@funerarialaamerica.com?subject=Consulta%20desde%20web&body=Hola,%20me%20gustaría%20obtener%20más%20información..." class="email-button"> info@funerarialaamerica.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Whatsapp</strong><br>
+                            <a href="https://wa.me/593999999999?text=Hola,%20necesito%20información%20sobre%20sus%20servicios" class="whatsapp-button">WhatsApp</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">📍</div>
                         <div>
                             <strong>Dirección</strong><br>
-                            Av. Los Andes 123<br>
-                            San Miguel, Cotopaxi, Ecuador
+                            <p>Vicente Cadena 170111 <br>Quito, Ecuador</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -809,11 +856,7 @@
             </div>
             
             <div class="map-container">
-                <div>
-                    <h3>📍 Nuestra Ubicación</h3>
-                    <p>Av. Los Andes 123, San Miguel, Cotopaxi</p>
-                    <p>Mapa interactivo disponible próximamente</p>
-                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7812390274557!2d-78.53040089999999!3d-0.24702389999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59903450f9497%3A0x8d786c9840a7364c!2sFuneraria%20La%20Am%C3%A9rica!5e0!3m2!1ses-419!2sec!4v1752725136293!5m2!1ses-419!2sec" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>
@@ -829,9 +872,10 @@
                 
                 <div class="footer-section">
                     <h3>Contacto</h3>
-                    <p>📞 +593 2 234-5678</p>
-                    <p>📧 info@funerarialaamerica.com</p>
-                    <p>📍 Av. Los Andes 123, San Miguel, Cotopaxi</p>
+                    <a href="tel:+593999999999" class="call-button">📞 0999999999</a><br>
+                    <a href="mailto:info@funerarialaamerica.com?subject=Consulta%20desde%20web&body=Hola,%20me%20gustaría%20obtener%20más%20información..." class="email-button"> 📧info@funerarialaamerica.com</a>
+                    <a href="https://wa.me/593999999999?text=Hola,%20necesito%20información%20sobre%20sus%20servicios" class="whatsapp-button">💬WhatsApp</a>
+                    <p>📍 Vicente Cadena 170111 <br>Quito, Ecuador</p>
                 </div>
                 
                 <div class="footer-section">
