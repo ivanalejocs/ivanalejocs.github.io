@@ -1275,12 +1275,9 @@
             document.body.style.overflow = 'auto';
         }
 
-        window.onclick = function(event) {
-            const modal = document.getElementById('projectModal');
-            if (event.target === modal) closeModal();
-        };
-
-        document.querySelector('.close').onclick = closeModal;
+        document.getElementById('projectModal').addEventListener('click', function(e) {
+            if (e.target.classList.contains('close') || e.target === this) closeModal();
+        });
 
         // Keyboard navigation for gallery
         document.addEventListener('keydown', function(e) {
