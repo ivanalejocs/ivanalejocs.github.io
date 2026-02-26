@@ -126,6 +126,40 @@
             overflow: hidden;
         }
 
+        /* ── VIDEO DE FONDO ── */
+        .hero-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .hero-video-bg #yt-player {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 56.25vw; /* 16:9 */
+            min-height: 100vh;
+            min-width: 177.78vh; /* 16:9 inverso */
+            border: none;
+            pointer-events: none;
+        }
+
+        /* Overlay oscuro sobre el video para mantener legibilidad del texto */
+        .hero-video-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 35, 44, 0.55);
+            z-index: 1;
+        }
+
+        /* El pseudo-elemento ::before queda sobre el overlay (z-index: 2) */
         .hero::before {
             content: '';
             position: absolute;
@@ -133,8 +167,10 @@
             left: 0;
             right: 0;
             bottom: 0;
+            z-index: 2;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="grad"><stop offset="0%" stop-color="%23d4af37" stop-opacity="0.1"/><stop offset="100%" stop-color="%23d4af37" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="3" fill="url(%23grad)"/><circle cx="800" cy="300" r="2" fill="url(%23grad)"/><circle cx="400" cy="700" r="2.5" fill="url(%23grad)"/></svg>');
             animation: float 20s ease-in-out infinite;
+            pointer-events: none;
         }
 
         @keyframes float {
@@ -145,7 +181,8 @@
         .hero-content {
             max-width: 800px;
             padding: 0 2rem;
-            z-index: 1;
+            position: relative;
+            z-index: 3;
         }
 
         .hero h1 {
@@ -475,7 +512,6 @@
             position: relative;
         }
 
-        /* Header del modal */
         .modal-header {
             display: flex;
             align-items: center;
@@ -491,7 +527,6 @@
             margin: 0;
         }
 
-        /* Cuerpo del modal: dos columnas */
         .modal-body {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -500,7 +535,6 @@
             gap: 0;
         }
 
-        /* Columna izquierda: galería */
         .modal-gallery-col {
             display: flex;
             flex-direction: column;
@@ -509,7 +543,6 @@
             border-right: 1px solid #f0f0f0;
         }
 
-        /* Columna derecha: info */
         .modal-info-col {
             display: flex;
             flex-direction: column;
@@ -537,7 +570,6 @@
 
         .close:hover { color: #1a232c; }
 
-        /* ── GALERÍA ── */
         .gallery-main {
             width: 100%;
             aspect-ratio: 4 / 3;
@@ -622,10 +654,7 @@
             object-fit: cover;
         }
 
-        /* Info col components */
-        .modal-status {
-            display: inline-block;
-        }
+        .modal-status { display: inline-block; }
 
         .modal-desc {
             font-size: 0.9rem;
@@ -701,7 +730,6 @@
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
         }
 
-        /* Responsive modal */
         @media (max-width: 700px) {
             .modal-body {
                 grid-template-columns: 1fr;
@@ -724,7 +752,6 @@
             }
         }
 
-        /* Fallback gallery items */
         .gallery-item {
             height: 150px;
             background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
@@ -761,54 +788,24 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .section {
-                padding: 3rem 5%;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-main {
-                height: 220px;
-            }
+            .nav-links { display: none; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 2.5rem; }
+            .section { padding: 3rem 5%; }
+            .about-content, .contact-content { grid-template-columns: 1fr; gap: 2rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .gallery-main { height: 220px; }
         }
 
-        /* Animations */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out;
-        }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out; }
 
-        /* Scroll Progress */
         .scroll-progress {
             position: fixed;
             top: 0;
@@ -820,9 +817,7 @@
             transition: width 0.3s ease;
         }
 
-        .hidden {
-            display: none;
-        }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
@@ -850,6 +845,14 @@
     <!-- Inicio Section -->
     <section id="inicio" class="section-container">
         <div class="hero">
+
+            <!-- ── VIDEO DE FONDO YOUTUBE ── -->
+            <div class="hero-video-bg">
+                <div id="yt-player"></div>
+            </div>
+            <!-- Overlay para oscurecer el video y mantener legibilidad -->
+            <div class="hero-video-overlay"></div>
+
             <div class="hero-content">
                 <h1>Desarrollos Inmobiliarios Exclusivos</h1>
                 <p>Creamos espacios únicos donde los sueños se convierten en realidad</p>
@@ -1009,7 +1012,7 @@
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <div><strong>Correos:</strong><br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a7cec9c1c8e7cec9cac8c5cecbcec6d5cec6d7d5c2caced2ca89c4c8ca">[email&#160;protected]</a><br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e89e8d869c899ba8818685878a818481899a8189989a8d85819d85c68b8785">[email&#160;protected]</a></div>
+                        <div><strong>Correos:</strong><br>info@veronagold.com<br>ventas@veronagold.com</div>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-whatsapp"></i>
@@ -1078,8 +1081,7 @@
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // ── BASE URL para imágenes del repositorio ──
+    <script>
         const RAW_BASE = 'https://raw.githubusercontent.com/ivanalejocs/ivanalejocs.github.io/main/inmobiliaria/verona/';
         const RAW_BASE_PLATINUM = 'https://raw.githubusercontent.com/ivanalejocs/ivanalejocs.github.io/main/inmobiliaria/platinum/';
 
@@ -1113,30 +1115,24 @@
             { src: RAW_BASE + 'verona10.jpeg',      label: 'Vista 10' },
         ];
 
-        // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
             const scrollProgress = document.querySelector('.scroll-progress');
             header.classList.toggle('scrolled', window.scrollY > 50);
-
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             scrollProgress.style.width = ((scrollTop / scrollHeight) * 100) + '%';
         });
 
-        // Navigation
         function showSection(sectionName) {
             document.querySelectorAll('.section-container').forEach(s => s.classList.add('hidden'));
             const target = document.getElementById(sectionName);
             target.classList.remove('hidden');
             target.classList.add('fade-in-up');
             window.scrollTo({ top: 0, behavior: 'smooth' });
-
-            // Close mobile menu
             document.querySelector('.nav-links').style.display = '';
         }
 
-        // ── GALERÍA INTERACTIVA ──
         let currentGalleryIndex = 0;
         let currentImages = [];
 
@@ -1144,7 +1140,7 @@
             currentImages = images;
             currentGalleryIndex = 0;
 
-            const mainImg  = `<div class="gallery-main" id="galleryMain">
+            const mainImg = `<div class="gallery-main" id="galleryMain">
                 <img id="galleryMainImg" src="${images[0].src}" alt="${images[0].label}" />
                 <button class="gallery-nav prev" onclick="galleryStep(-1)"><i class="fas fa-chevron-left"></i></button>
                 <button class="gallery-nav next" onclick="galleryStep(1)"><i class="fas fa-chevron-right"></i></button>
@@ -1165,8 +1161,8 @@
         }
 
         function galleryGoTo(index) {
-            const mainImg = document.getElementById('galleryMainImg');
-            const counter = document.getElementById('galleryCounter');
+            const mainImg  = document.getElementById('galleryMainImg');
+            const counter  = document.getElementById('galleryCounter');
             const prevThumb = document.getElementById('thumb-' + currentGalleryIndex);
             const nextThumb = document.getElementById('thumb-' + index);
 
@@ -1182,12 +1178,9 @@
             }, 200);
 
             currentGalleryIndex = index;
-
-            // Scroll thumb into view
             if (nextThumb) nextThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
 
-        // ── PROJECT DATA ──
         const projectData = {
             'Torre Platinum': {
                 status: 'Terminado',
@@ -1234,18 +1227,16 @@
         };
 
         function openProjectModal(projectName) {
-            const modal       = document.getElementById('projectModal');
-            const project     = projectData[projectName];
+            const modal   = document.getElementById('projectModal');
+            const project = projectData[projectName];
             if (!project) return;
 
-            // Header
             document.getElementById('modalTitle').textContent = projectName;
             const statusEl = document.getElementById('modalStatus');
             statusEl.textContent = project.status;
             statusEl.className = 'project-status modal-status' +
                 (project.status === 'Terminado' ? '' : ' en-construccion');
 
-            // ── Columna izquierda: galería ──
             const galleryCol = document.getElementById('modalGalleryCol');
             if (project.images && project.images.length > 0) {
                 galleryCol.innerHTML = buildGallery(project.images);
@@ -1257,11 +1248,9 @@
                     </div>`;
             }
 
-            // ── Columna derecha: info ──
             const infoCol = document.getElementById('modalInfoCol');
             infoCol.innerHTML = `
                 <p class="modal-desc">${project.description}</p>
-
                 <div>
                     <div class="modal-section-title">Características</div>
                     <div class="features-grid">
@@ -1271,7 +1260,6 @@
                             </div>`).join('')}
                     </div>
                 </div>
-
                 <div>
                     <div class="modal-section-title">Opciones Disponibles</div>
                     <div class="apts-grid">
@@ -1284,7 +1272,6 @@
                             </div>`).join('')}
                     </div>
                 </div>
-
                 <button class="modal-cta" onclick="showSection('contacto'); closeModal();">
                     Solicitar Más Información
                 </button>
@@ -1303,7 +1290,6 @@
             if (e.target.classList.contains('close') || e.target === this) closeModal();
         });
 
-        // Keyboard navigation for gallery
         document.addEventListener('keydown', function(e) {
             const modal = document.getElementById('projectModal');
             if (modal.style.display !== 'block') return;
@@ -1312,7 +1298,6 @@
             if (e.key === 'Escape')     closeModal();
         });
 
-        // Contact form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const submitBtn = this.querySelector('.submit-btn');
@@ -1326,14 +1311,53 @@
             }, 2000);
         });
 
-        // Mobile menu toggle
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
         });
 
-        // Initialize with home section
         showSection('inicio');
+
+        // ── YOUTUBE IFRAME API ──
+        // Carga la API de YouTube de forma asíncrona
+        var tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(tag, firstScript);
+
+        var ytPlayer;
+        // Callback que llama la API cuando está lista
+        function onYouTubeIframeAPIReady() {
+            ytPlayer = new YT.Player('yt-player', {
+                videoId: '_bHuNn5HNBA',
+                playerVars: {
+                    autoplay:       1,
+                    mute:           1,
+                    loop:           1,
+                    playlist:       '_bHuNn5HNBA',
+                    controls:       0,
+                    showinfo:       0,
+                    rel:            0,
+                    disablekb:      1,
+                    modestbranding: 1,
+                    iv_load_policy: 3,
+                    playsinline:    1,
+                    origin:         window.location.origin || '*'
+                },
+                events: {
+                    onReady: function(e) {
+                        e.target.mute();
+                        e.target.playVideo();
+                    },
+                    onStateChange: function(e) {
+                        // Si se pausa o detiene por cualquier razón, vuelve a reproducir
+                        if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) {
+                            e.target.playVideo();
+                        }
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>
