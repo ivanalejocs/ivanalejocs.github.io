@@ -137,26 +137,6 @@
             animation: float 20s ease-in-out infinite;
         }
 
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.45);
-            z-index: 1;
-        }
-
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(180deg); }
@@ -165,8 +145,7 @@
         .hero-content {
             max-width: 800px;
             padding: 0 2rem;
-            z-index: 2;
-            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
@@ -868,15 +847,9 @@
         </nav>
     </header>
 
-        <!-- Inicio Section -->
+    <!-- Inicio Section -->
+    <section id="inicio" class="section-container">
         <div class="hero">
-            <!-- Video de fondo -->
-            <video autoplay muted loop playsinline class="hero-video">
-                <source src="https://raw.githubusercontent.com/ivanalejocs/ivanalejocs.github.io/main/inmobiliaria/platinum/Video.MP4" type="video/mp4">
-            </video>
-            <!-- Capa oscura semitransparente -->
-            <div class="hero-overlay"></div>
-
             <div class="hero-content">
                 <h1>Desarrollos Inmobiliarios Exclusivos</h1>
                 <p>Creamos espacios únicos donde los sueños se convierten en realidad</p>
@@ -1140,26 +1113,28 @@
             { src: RAW_BASE + 'verona10.jpeg',      label: 'Vista 10' },
         ];
 
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            const scrollProgress = document.querySelector('.scroll-progress');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            scrollProgress.style.width = ((scrollTop / scrollHeight) * 100) + '%';
+        });
+
         // Navigation
-function showSection(sectionName, updateHash = true) {
-    document.querySelectorAll('.section-container').forEach(s => s.classList.add('hidden'));
-    const target = document.getElementById(sectionName);
-    if (!target) return;
-    target.classList.remove('hidden');
-    target.classList.add('fade-in-up');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+        function showSection(sectionName) {
+            document.querySelectorAll('.section-container').forEach(s => s.classList.add('hidden'));
+            const target = document.getElementById(sectionName);
+            target.classList.remove('hidden');
+            target.classList.add('fade-in-up');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    if (updateHash) location.hash = sectionName;
-
-    // Close mobile menu
-    document.querySelector('.nav-links').style.display = '';
-}
-
-// Manejar botón atrás/adelante
-window.addEventListener('hashchange', function() {
-    const hash = location.hash.replace('#', '');
-    showSection(hash || 'inicio', false);
-});
+            // Close mobile menu
+            document.querySelector('.nav-links').style.display = '';
+        }
 
         // ── GALERÍA INTERACTIVA ──
         let currentGalleryIndex = 0;
@@ -1357,9 +1332,8 @@ window.addEventListener('hashchange', function() {
             navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
         });
 
-        // Al cargar, leer el hash de la URL
-const initialHash = location.hash.replace('#', '');
-showSection(initialHash || 'inicio', false);
+        // Initialize with home section
+        showSection('inicio');
     </script>
 </body>
 </html>
