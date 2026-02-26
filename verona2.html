@@ -302,7 +302,7 @@
 
         .project-image {
             width: 100%;
-            height: 250px;
+            aspect-ratio: 4 / 3;
             background: linear-gradient(45deg, #d4af37, #f4d03f);
             display: flex;
             align-items: center;
@@ -322,12 +322,8 @@
             transition: transform 0.4s ease;
         }
 
-.project-card:hover .project-image img {
-    transform: scale(1.03);
-}
-
         .project-card:hover .project-image img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .project-image-fallback {
@@ -543,19 +539,20 @@
 
         /* ── GALERÍA ── */
         .gallery-main {
-            flex: 1;
+            width: 100%;
+            aspect-ratio: 4 / 3;
             border-radius: 12px;
             overflow: hidden;
             margin-bottom: 0.6rem;
             position: relative;
-            background: #111;
-            min-height: 0;
+            background: #f5f0e8;
         }
 
         .gallery-main img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            background: #f5f0e8;
             transition: opacity 0.35s ease;
         }
 
@@ -900,7 +897,12 @@
 
                 <div class="project-card" onclick="openProjectModal('Torre Platinum')">
                     <div class="project-image">
-                        <span class="project-image-fallback">Torre Platinum</span>
+                        <img
+                            src="https://raw.githubusercontent.com/ivanalejocs/ivanalejocs.github.io/main/inmobiliaria/platinum/platinum1.jpeg"
+                            alt="Torre Platinum"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        />
+                        <span class="project-image-fallback" style="display:none;">Torre Platinum</span>
                     </div>
                     <div class="project-info">
                         <h3>Torre Platinum</h3>
@@ -1079,6 +1081,23 @@
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ── BASE URL para imágenes del repositorio ──
         const RAW_BASE = 'https://raw.githubusercontent.com/ivanalejocs/ivanalejocs.github.io/main/inmobiliaria/verona/';
+        const RAW_BASE_PLATINUM = 'https://raw.githubusercontent.com/ivanalejocs/ivanalejocs.github.io/main/inmobiliaria/platinum/';
+
+        const PLATINUM_IMAGES = [
+            { src: RAW_BASE_PLATINUM + 'platinum1.jpeg',  label: 'Vista 1' },
+            { src: RAW_BASE_PLATINUM + 'platinum2.jpeg',  label: 'Vista 2' },
+            { src: RAW_BASE_PLATINUM + 'platinum3.jpeg',  label: 'Vista 3' },
+            { src: RAW_BASE_PLATINUM + 'platinum4.jpeg',  label: 'Vista 4' },
+            { src: RAW_BASE_PLATINUM + 'platinum5.jpeg',  label: 'Vista 5' },
+            { src: RAW_BASE_PLATINUM + 'platinum6.jpeg',  label: 'Vista 6' },
+            { src: RAW_BASE_PLATINUM + 'platinum7.jpeg',  label: 'Vista 7' },
+            { src: RAW_BASE_PLATINUM + 'platinum8.jpeg',  label: 'Vista 8' },
+            { src: RAW_BASE_PLATINUM + 'platinum9.jpeg',  label: 'Vista 9' },
+            { src: RAW_BASE_PLATINUM + 'platinum10.jpeg', label: 'Vista 10' },
+            { src: RAW_BASE_PLATINUM + 'platinum11.jpeg', label: 'Vista 11' },
+            { src: RAW_BASE_PLATINUM + 'platinum12.jpeg', label: 'Vista 12' },
+            { src: RAW_BASE_PLATINUM + 'platinum13.jpeg', label: 'Vista 13' },
+        ];
 
         const VERONA_IMAGES = [
             { src: RAW_BASE + 'edificioverona.png', label: 'Fachada Principal' },
@@ -1173,7 +1192,7 @@
             'Torre Platinum': {
                 status: 'Terminado',
                 description: 'Exclusivo complejo residencial de 25 pisos ubicado en el corazón de la ciudad, diseñado para ofrecer el máximo lujo y comodidad.',
-                images: null, // sin galería de fotos propias aún
+                images: PLATINUM_IMAGES,
                 features: [
                     'Piscina infinity en el piso 20',
                     'Gimnasio completamente equipado',
