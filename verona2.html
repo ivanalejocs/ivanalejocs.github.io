@@ -1140,37 +1140,26 @@
             { src: RAW_BASE + 'verona10.jpeg',      label: 'Vista 10' },
         ];
 
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            const scrollProgress = document.querySelector('.scroll-progress');
-            header.classList.toggle('scrolled', window.scrollY > 50);
-
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            scrollProgress.style.width = ((scrollTop / scrollHeight) * 100) + '%';
-        });
-
         // Navigation
-        function showSection(sectionName) {
-            document.querySelectorAll('.section-container').forEach(s => s.classList.add('hidden'));
-            const target = document.getElementById(sectionName);
-            target.classList.remove('hidden');
-            target.classList.add('fade-in-up');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+function showSection(sectionName, updateHash = true) {
+    document.querySelectorAll('.section-container').forEach(s => s.classList.add('hidden'));
+    const target = document.getElementById(sectionName);
+    if (!target) return;
+    target.classList.remove('hidden');
+    target.classList.add('fade-in-up');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Actualizar hash en la URL
-            location.hash = sectionName;
+    if (updateHash) location.hash = sectionName;
 
-        // Close mobile menu
-            document.querySelector('.nav-links').style.display = '';
-        }
+    // Close mobile menu
+    document.querySelector('.nav-links').style.display = '';
+}
 
-        // Manejar botón atrás/adelante del navegador
-        window.addEventListener('hashchange', function() {
-            const hash = location.hash.replace('#', '');
-            showSection(hash || 'inicio');
-        });
+// Manejar botón atrás/adelante
+window.addEventListener('hashchange', function() {
+    const hash = location.hash.replace('#', '');
+    showSection(hash || 'inicio', false);
+});
 
         // ── GALERÍA INTERACTIVA ──
         let currentGalleryIndex = 0;
@@ -1369,8 +1358,8 @@
         });
 
         // Al cargar, leer el hash de la URL
-        const initialHash = location.hash.replace('#', '');
-        showSection(initialHash || 'inicio');
+const initialHash = location.hash.replace('#', '');
+showSection(initialHash || 'inicio', false);
     </script>
 </body>
 </html>
