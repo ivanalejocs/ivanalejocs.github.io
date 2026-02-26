@@ -126,6 +126,40 @@
             overflow: hidden;
         }
 
+        /* ── VIDEO DE FONDO ── */
+        .hero-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .hero-video-bg #yt-player {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 56.25vw; /* 16:9 */
+            min-height: 100vh;
+            min-width: 177.78vh; /* 16:9 inverso */
+            border: none;
+            pointer-events: none;
+        }
+
+        /* Overlay oscuro sobre el video para mantener legibilidad del texto */
+        .hero-video-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 35, 44, 0.55);
+            z-index: 1;
+        }
+
+        /* El pseudo-elemento ::before queda sobre el overlay (z-index: 2) */
         .hero::before {
             content: '';
             position: absolute;
@@ -133,8 +167,10 @@
             left: 0;
             right: 0;
             bottom: 0;
+            z-index: 2;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="grad"><stop offset="0%" stop-color="%23d4af37" stop-opacity="0.1"/><stop offset="100%" stop-color="%23d4af37" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="3" fill="url(%23grad)"/><circle cx="800" cy="300" r="2" fill="url(%23grad)"/><circle cx="400" cy="700" r="2.5" fill="url(%23grad)"/></svg>');
             animation: float 20s ease-in-out infinite;
+            pointer-events: none;
         }
 
         @keyframes float {
@@ -145,7 +181,8 @@
         .hero-content {
             max-width: 800px;
             padding: 0 2rem;
-            z-index: 1;
+            position: relative;
+            z-index: 3;
         }
 
         .hero h1 {
@@ -302,11 +339,37 @@
 
         .project-image {
             width: 100%;
-            height: 250px;
+            aspect-ratio: 4 / 3;
             background: linear-gradient(45deg, #d4af37, #f4d03f);
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #1a232c;
+            font-size: 1.2rem;
+            font-weight: 600;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #f5f0e8;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.03);
+        }
+
+        .project-image-fallback {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
             color: #1a232c;
             font-size: 1.2rem;
             font-weight: 600;
@@ -428,36 +491,265 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.open {
+            display: flex;
         }
 
         .modal-content {
             background: white;
-            margin: 5% auto;
-            padding: 2rem;
             border-radius: 20px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 80vh;
-            overflow-y: auto;
+            width: 92vw;
+            max-width: 1000px;
+            height: 88vh;
+            max-height: 88vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem 0.8rem;
+            border-bottom: 1px solid #f0f0f0;
+            flex-shrink: 0;
+        }
+
+        .modal-header h2 {
+            font-size: 1.3rem;
+            color: #1a232c;
+            margin: 0;
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            flex: 1;
+            overflow: hidden;
+            gap: 0;
+        }
+
+        .modal-gallery-col {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 0.8rem 1rem 1.5rem;
+            overflow: hidden;
+            border-right: 1px solid #f0f0f0;
+        }
+
+        .modal-info-col {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 1.5rem 1rem 1rem;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #d4af37 #eee;
+            gap: 0.8rem;
+        }
+
+        .modal-info-col::-webkit-scrollbar { width: 4px; }
+        .modal-info-col::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 2px; }
 
         .close {
+            background: none;
+            border: none;
             color: #aaa;
-            float: right;
-            font-size: 28px;
+            font-size: 24px;
             font-weight: bold;
             cursor: pointer;
+            line-height: 1;
+            padding: 0 0 0 1rem;
+            transition: color 0.2s;
         }
 
-        .close:hover {
-            color: #000;
+        .close:hover { color: #1a232c; }
+
+        .gallery-main {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 0.6rem;
+            position: relative;
+            background: #f5f0e8;
         }
 
-        .project-gallery {
+        .gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #f5f0e8;
+            transition: opacity 0.35s ease;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(26, 35, 44, 0.65);
+            color: #fff;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            z-index: 10;
+        }
+
+        .gallery-nav:hover { background: #d4af37; color: #1a232c; }
+        .gallery-nav.prev { left: 8px; }
+        .gallery-nav.next { right: 8px; }
+
+        .gallery-counter {
+            position: absolute;
+            bottom: 8px;
+            right: 12px;
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+
+        .gallery-thumbs {
+            display: flex;
+            gap: 0.4rem;
+            overflow-x: auto;
+            padding-bottom: 2px;
+            flex-shrink: 0;
+            scrollbar-width: thin;
+            scrollbar-color: #d4af37 #eee;
+        }
+
+        .gallery-thumbs::-webkit-scrollbar { height: 3px; }
+        .gallery-thumbs::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 2px; }
+
+        .gallery-thumb {
+            flex: 0 0 58px;
+            height: 44px;
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .gallery-thumb:hover { transform: scale(1.06); }
+        .gallery-thumb.active { border-color: #d4af37; }
+
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-status { display: inline-block; }
+
+        .modal-desc {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .modal-section-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.4rem;
+        }
+
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.3rem;
+        }
+
+        .feature-item {
+            font-size: 0.8rem;
+            color: #444;
+            padding: 0.3rem 0.5rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .feature-item i { color: #27ae60; font-size: 0.7rem; flex-shrink: 0; }
+
+        .apts-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .apt-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto auto;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.8rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.82rem;
+        }
+
+        .apt-row .apt-name { font-weight: 600; color: #1a232c; }
+        .apt-row .apt-detail { color: #777; white-space: nowrap; }
+        .apt-row .apt-price { color: #d4af37; font-weight: 700; white-space: nowrap; }
+
+        .modal-cta {
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+            color: #1a232c;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .modal-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+        }
+
+        @media (max-width: 700px) {
+            .modal-body {
+                grid-template-columns: 1fr;
+                overflow-y: auto;
+            }
+            .modal-gallery-col {
+                border-right: none;
+                border-bottom: 1px solid #f0f0f0;
+                height: 260px;
+                padding: 0.8rem;
+                flex-shrink: 0;
+            }
+            .modal-info-col {
+                padding: 0.8rem;
+                overflow-y: visible;
+            }
+            .modal-content {
+                height: 92vh;
+                overflow-y: auto;
+            }
         }
 
         .gallery-item {
@@ -496,56 +788,24 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .section {
-                padding: 3rem 5%;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
+            .nav-links { display: none; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 2.5rem; }
+            .section { padding: 3rem 5%; }
+            .about-content, .contact-content { grid-template-columns: 1fr; gap: 2rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .gallery-main { height: 220px; }
         }
 
-        /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out;
-        }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out; }
 
-        /* Scroll Progress */
         .scroll-progress {
             position: fixed;
             top: 0;
@@ -557,10 +817,7 @@
             transition: width 0.3s ease;
         }
 
-        /* Hidden sections */
-        .hidden {
-            display: none;
-        }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
@@ -588,6 +845,14 @@
     <!-- Inicio Section -->
     <section id="inicio" class="section-container">
         <div class="hero">
+
+            <!-- ── VIDEO DE FONDO YOUTUBE ── -->
+            <div class="hero-video-bg">
+                <div id="yt-player"></div>
+            </div>
+            <!-- Overlay para oscurecer el video y mantener legibilidad -->
+            <div class="hero-video-overlay"></div>
+
             <div class="hero-content">
                 <h1>Desarrollos Inmobiliarios Exclusivos</h1>
                 <p>Creamos espacios únicos donde los sueños se convierten en realidad</p>
@@ -603,23 +868,17 @@
 
             <div class="cards-grid">
                 <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-building"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-building"></i></div>
                     <h3>Proyectos Residenciales</h3>
                     <p>Desarrollamos complejos residenciales modernos con amenidades de lujo, diseñados para ofrecer confort y calidad de vida excepcional.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-store"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-store"></i></div>
                     <h3>Desarrollos Comerciales</h3>
                     <p>Creamos espacios comerciales estratégicamente ubicados, perfectos para impulsar tu negocio con diseño funcional y moderna infraestructura.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-certificate"></i></div>
                     <h3>Calidad Garantizada</h3>
                     <p>Todos nuestros proyectos cuentan con los más altos estándares de calidad, materiales premium y tecnología de construcción avanzada.</p>
                 </div>
@@ -627,7 +886,7 @@
 
             <div style="margin-top: 4rem; text-align: center;">
                 <p style="font-size: 1.1rem; line-height: 1.8; color: #555; max-width: 900px; margin: 0 auto;">
-                    En Inmobiliaria Veronagold entendemos que cada proyecto es único y especial. Por eso, nos enfocamos en crear desarrollos que no solo cumplan con las expectativas de nuestros clientes, sino que las superen. Nuestro equipo de arquitectos, ingenieros y diseñadores trabaja de la mano con tecnología de vanguardia para ofrecer espacios que combinan funcionalidad, estética y sostenibilidad. Cada detalle es cuidadosamente planificado para garantizar que nuestros residentes y usuarios disfruten de una experiencia extraordinaria en cada uno de nuestros desarrollos.
+                    En Inmobiliaria Veronagold entendemos que cada proyecto es único y especial. Por eso, nos enfocamos en crear desarrollos que no solo cumplan con las expectativas de nuestros clientes, sino que las superen. Nuestro equipo de arquitectos, ingenieros y diseñadores trabaja de la mano con tecnología de vanguardia para ofrecer espacios que combinan funcionalidad, estética y sostenibilidad.
                 </p>
             </div>
         </div>
@@ -638,8 +897,16 @@
         <div class="section">
             <h2>Nuestros Proyectos</h2>
             <div class="projects-grid">
+
                 <div class="project-card" onclick="openProjectModal('Torre Platinum')">
-                    <div class="project-image">Torre Platinum</div>
+                    <div class="project-image">
+                        <img
+                            src="https://raw.githubusercontent.com/ivanalejocs/ivanalejocs.github.io/main/inmobiliaria/platinum/platinum1.jpeg"
+                            alt="Torre Platinum"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        />
+                        <span class="project-image-fallback" style="display:none;">Torre Platinum</span>
+                    </div>
                     <div class="project-info">
                         <h3>Torre Platinum</h3>
                         <span class="project-status">Terminado</span>
@@ -648,13 +915,21 @@
                 </div>
 
                 <div class="project-card" onclick="openProjectModal('Complejo Habitacional Verona')">
-                    <div class="project-image">Complejo Habitacional Verona</div>
+                    <div class="project-image">
+                        <img
+                            src="https://raw.githubusercontent.com/ivanalejocs/ivanalejocs.github.io/main/inmobiliaria/verona/edificioverona.png"
+                            alt="Complejo Habitacional Verona"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        />
+                        <span class="project-image-fallback" style="display:none;">Complejo Habitacional Verona</span>
+                    </div>
                     <div class="project-info">
                         <h3>Complejo Habitacional Verona</h3>
                         <span class="project-status">Terminado</span>
                         <p>Un espacio moderno y seguro diseñado para tu comodidad y la de tu familia, donde vivir tranquilo y bien ubicado es una realidad.</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -666,46 +941,31 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3 style="color: #d4af37; margin-bottom: 1rem;">Nuestra Historia</h3>
-                    <p>
-                        Fundada en 2009, Inmobiliaria Veronagold nació con la visión de transformar el sector inmobiliario mediante la creación de espacios únicos y funcionales. Comenzamos como una pequeña empresa familiar y hoy somos reconocidos como líderes en el desarrollo de proyectos residenciales y comerciales de alta gama.
-                    </p>
-                    
+                    <p>Fundada en 2009, Inmobiliaria Veronagold nació con la visión de transformar el sector inmobiliario mediante la creación de espacios únicos y funcionales. Comenzamos como una pequeña empresa familiar y hoy somos reconocidos como líderes en el desarrollo de proyectos residenciales y comerciales de alta gama.</p>
                     <h3 style="color: #d4af37; margin: 2rem 0 1rem;">Nuestra Misión</h3>
-                    <p>
-                        Desarrollar proyectos inmobiliarios excepcionales que mejoren la calidad de vida de nuestros clientes, combinando diseño innovador, tecnología avanzada y sostenibilidad ambiental en cada uno de nuestros desarrollos.
-                    </p>
-                    
+                    <p>Desarrollar proyectos inmobiliarios excepcionales que mejoren la calidad de vida de nuestros clientes, combinando diseño innovador, tecnología avanzada y sostenibilidad ambiental en cada uno de nuestros desarrollos.</p>
                     <h3 style="color: #d4af37; margin: 2rem 0 1rem;">Nuestra Visión</h3>
-                    <p>
-                        Ser la empresa inmobiliaria líder en la región, reconocida por la excelencia en nuestros proyectos, la innovación en el diseño y nuestro compromiso con el desarrollo sostenible y la satisfacción del cliente.
-                    </p>
+                    <p>Ser la empresa inmobiliaria líder en la región, reconocida por la excelencia en nuestros proyectos, la innovación en el diseño y nuestro compromiso con el desarrollo sostenible y la satisfacción del cliente.</p>
                 </div>
                 <div class="about-image">
                     <i class="fas fa-building" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-                    <br>
-                    Edificio Corporativo
+                    <br>Edificio Corporativo
                 </div>
             </div>
 
             <div class="cards-grid" style="margin-top: 4rem;">
                 <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-users"></i></div>
                     <h3>Nuestro Equipo</h3>
                     <p>Contamos con más de 50 profesionales especializados en arquitectura, ingeniería, diseño y construcción, todos comprometidos con la excelencia.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-award"></i></div>
                     <h3>Reconocimientos</h3>
                     <p>Hemos recibido múltiples premios por nuestros proyectos innovadores y nuestro compromiso con la calidad y el diseño sostenible.</p>
                 </div>
                 <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
+                    <div class="card-icon"><i class="fas fa-leaf"></i></div>
                     <h3>Sostenibilidad</h3>
                     <p>Implementamos prácticas de construcción sostenible y tecnologías verdes en todos nuestros proyectos para proteger el medio ambiente.</p>
                 </div>
@@ -742,51 +1002,25 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <h3 style="color: #1a232c; margin-bottom: 2rem;">Información de Contacto</h3>
-                    
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <strong>Dirección:</strong><br>
-                            Tonsupa<br>
-                            Edif Verona<br>
-                            Tonsupa, Esmeraldas, Ecuador
-                        </div>
+                        <div><strong>Dirección:</strong><br>Tonsupa<br>Edif Verona<br>Tonsupa, Esmeraldas, Ecuador</div>
                     </div>
-
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
-                        <div>
-                            <strong>Teléfonos:</strong><br>
-                            +593 99 9999999<br>
-                            +593 99 9999999
-                        </div>
+                        <div><strong>Teléfonos:</strong><br>+593 99 9999999<br>+593 99 9999999</div>
                     </div>
-
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <div>
-                            <strong>Correos:</strong><br>
-                            info@inmobiliariapremium.com<br>
-                            ventas@inmobiliariapremium.com
-                        </div>
+                        <div><strong>Correos:</strong><br>info@veronagold.com<br>ventas@veronagold.com</div>
                     </div>
-
                     <div class="contact-item">
                         <i class="fab fa-whatsapp"></i>
-                        <div>
-                            <strong>WhatsApp:</strong><br>
-                            +593 99 9999999<br>
-                            +593 99 9999999
-                        </div>
+                        <div><strong>WhatsApp:</strong><br>+593 99 9999999<br>+593 99 9999999</div>
                     </div>
-
                     <div class="contact-item">
                         <i class="fas fa-clock"></i>
-                        <div>
-                            <strong>Horarios:</strong><br>
-                            Lunes - Viernes: 8:00 AM - 6:00 PM<br>
-                            Sábados: 9:00 AM - 4:00 PM
-                        </div>
+                        <div><strong>Horarios:</strong><br>Lunes - Viernes: 8:00 AM - 6:00 PM<br>Sábados: 9:00 AM - 4:00 PM</div>
                     </div>
                 </div>
 
@@ -797,36 +1031,27 @@
                             <label for="nombres">Nombres Completos *</label>
                             <input type="text" id="nombres" name="nombres" required>
                         </div>
-
                         <div class="form-group">
                             <label for="email">Correo Electrónico *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
-
                         <div class="form-group">
                             <label for="telefono">Teléfono *</label>
                             <input type="tel" id="telefono" name="telefono" required>
                         </div>
-
                         <div class="form-group">
                             <label for="propiedad">Propiedad de Interés</label>
                             <select id="propiedad" name="propiedad">
                                 <option value="">Seleccionar proyecto...</option>
                                 <option value="Torre Platinum">Torre Platinum</option>
-                                <option value="Residencial Vista Dorada">Residencial Vista Dorada</option>
-                                <option value="Plaza Central">Plaza Central</option>
-                                <option value="Condominio Los Álamos">Condominio Los Álamos</option>
-                                <option value="Edificio Empresarial">Edificio Empresarial</option>
-                                <option value="Residencial Océano">Residencial Océano</option>
+                                <option value="Complejo Habitacional Verona">Complejo Habitacional Verona</option>
                                 <option value="Información General">Información General</option>
                             </select>
                         </div>
-
                         <div class="form-group">
                             <label for="mensaje">Mensaje</label>
                             <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos sobre tu consulta..."></textarea>
                         </div>
-
                         <button type="submit" class="submit-btn">Enviar Mensaje</button>
                     </form>
                 </div>
@@ -842,53 +1067,125 @@
     <!-- Project Modal -->
     <div id="projectModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="modalContent"></div>
+            <div class="modal-header">
+                <div>
+                    <h2 id="modalTitle"></h2>
+                    <span id="modalStatus" class="project-status"></span>
+                </div>
+                <button class="close" aria-label="Cerrar">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-gallery-col" id="modalGalleryCol"></div>
+                <div class="modal-info-col" id="modalInfoCol"></div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Header scroll effect
+        const RAW_BASE = 'https://raw.githubusercontent.com/ivanalejocs/ivanalejocs.github.io/main/inmobiliaria/verona/';
+        const RAW_BASE_PLATINUM = 'https://raw.githubusercontent.com/ivanalejocs/ivanalejocs.github.io/main/inmobiliaria/platinum/';
+
+        const PLATINUM_IMAGES = [
+            { src: RAW_BASE_PLATINUM + 'platinum1.jpeg',  label: 'Vista 1' },
+            { src: RAW_BASE_PLATINUM + 'platinum2.jpeg',  label: 'Vista 2' },
+            { src: RAW_BASE_PLATINUM + 'platinum3.jpeg',  label: 'Vista 3' },
+            { src: RAW_BASE_PLATINUM + 'platinum4.jpeg',  label: 'Vista 4' },
+            { src: RAW_BASE_PLATINUM + 'platinum5.jpeg',  label: 'Vista 5' },
+            { src: RAW_BASE_PLATINUM + 'platinum6.jpeg',  label: 'Vista 6' },
+            { src: RAW_BASE_PLATINUM + 'platinum7.jpeg',  label: 'Vista 7' },
+            { src: RAW_BASE_PLATINUM + 'platinum8.jpeg',  label: 'Vista 8' },
+            { src: RAW_BASE_PLATINUM + 'platinum9.jpeg',  label: 'Vista 9' },
+            { src: RAW_BASE_PLATINUM + 'platinum10.jpeg', label: 'Vista 10' },
+            { src: RAW_BASE_PLATINUM + 'platinum11.jpeg', label: 'Vista 11' },
+            { src: RAW_BASE_PLATINUM + 'platinum12.jpeg', label: 'Vista 12' },
+            { src: RAW_BASE_PLATINUM + 'platinum13.jpeg', label: 'Vista 13' },
+        ];
+
+        const VERONA_IMAGES = [
+            { src: RAW_BASE + 'edificioverona.png', label: 'Fachada Principal' },
+            { src: RAW_BASE + 'verona1.jpeg',       label: 'Vista 1' },
+            { src: RAW_BASE + 'verona2.jpeg',       label: 'Vista 2' },
+            { src: RAW_BASE + 'verona3.jpeg',       label: 'Vista 3' },
+            { src: RAW_BASE + 'verona4.jpeg',       label: 'Vista 4' },
+            { src: RAW_BASE + 'verona5.jpeg',       label: 'Vista 5' },
+            { src: RAW_BASE + 'verona6.jpeg',       label: 'Vista 6' },
+            { src: RAW_BASE + 'verona7.jpeg',       label: 'Vista 7' },
+            { src: RAW_BASE + 'verona8.jpeg',       label: 'Vista 8' },
+            { src: RAW_BASE + 'verona9.jpeg',       label: 'Vista 9' },
+            { src: RAW_BASE + 'verona10.jpeg',      label: 'Vista 10' },
+        ];
+
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
             const scrollProgress = document.querySelector('.scroll-progress');
-            
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-
-            // Scroll progress
+            header.classList.toggle('scrolled', window.scrollY > 50);
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const progress = (scrollTop / scrollHeight) * 100;
-            scrollProgress.style.width = progress + '%';
+            scrollProgress.style.width = ((scrollTop / scrollHeight) * 100) + '%';
         });
 
-        // Navigation
         function showSection(sectionName) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.section-container');
-            sections.forEach(section => {
-                section.classList.add('hidden');
-            });
-
-            // Show selected section
-            document.getElementById(sectionName).classList.remove('hidden');
-            
-            // Add animation
-            document.getElementById(sectionName).classList.add('fade-in-up');
-            
-            // Scroll to top
+            document.querySelectorAll('.section-container').forEach(s => s.classList.add('hidden'));
+            const target = document.getElementById(sectionName);
+            target.classList.remove('hidden');
+            target.classList.add('fade-in-up');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelector('.nav-links').style.display = '';
         }
 
-        // Project modal
+        let currentGalleryIndex = 0;
+        let currentImages = [];
+
+        function buildGallery(images) {
+            currentImages = images;
+            currentGalleryIndex = 0;
+
+            const mainImg = `<div class="gallery-main" id="galleryMain">
+                <img id="galleryMainImg" src="${images[0].src}" alt="${images[0].label}" />
+                <button class="gallery-nav prev" onclick="galleryStep(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="gallery-nav next" onclick="galleryStep(1)"><i class="fas fa-chevron-right"></i></button>
+                <span class="gallery-counter" id="galleryCounter">1 / ${images.length}</span>
+            </div>`;
+
+            const thumbs = images.map((img, i) =>
+                `<div class="gallery-thumb ${i === 0 ? 'active' : ''}" id="thumb-${i}" onclick="galleryGoTo(${i})">
+                    <img src="${img.src}" alt="${img.label}" loading="lazy" />
+                </div>`
+            ).join('');
+
+            return mainImg + `<div class="gallery-thumbs">${thumbs}</div>`;
+        }
+
+        function galleryStep(dir) {
+            galleryGoTo((currentGalleryIndex + dir + currentImages.length) % currentImages.length);
+        }
+
+        function galleryGoTo(index) {
+            const mainImg  = document.getElementById('galleryMainImg');
+            const counter  = document.getElementById('galleryCounter');
+            const prevThumb = document.getElementById('thumb-' + currentGalleryIndex);
+            const nextThumb = document.getElementById('thumb-' + index);
+
+            if (prevThumb) prevThumb.classList.remove('active');
+            if (nextThumb) nextThumb.classList.add('active');
+
+            mainImg.style.opacity = '0';
+            setTimeout(() => {
+                mainImg.src = currentImages[index].src;
+                mainImg.alt = currentImages[index].label;
+                mainImg.style.opacity = '1';
+                counter.textContent = (index + 1) + ' / ' + currentImages.length;
+            }, 200);
+
+            currentGalleryIndex = index;
+            if (nextThumb) nextThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+
         const projectData = {
             'Torre Platinum': {
                 status: 'Terminado',
                 description: 'Exclusivo complejo residencial de 25 pisos ubicado en el corazón de la ciudad, diseñado para ofrecer el máximo lujo y comodidad.',
+                images: PLATINUM_IMAGES,
                 features: [
                     'Piscina infinity en el piso 20',
                     'Gimnasio completamente equipado',
@@ -900,245 +1197,167 @@
                     'Concierge y servicio de valet'
                 ],
                 apartments: [
-                    { type: 'Estudio', size: '45 m²', bathrooms: 1, bedrooms: 0, price: 'Desde $85,000' },
-                    { type: 'Apartamento 1 dormitorio', size: '65 m²', bathrooms: 1, bedrooms: 1, price: 'Desde $120,000' },
-                    { type: 'Apartamento 2 dormitorios', size: '85 m²', bathrooms: 2, bedrooms: 2, price: 'Desde $165,000' },
+                    { type: 'Estudio',                   size: '45 m²',  bathrooms: 1, bedrooms: 0, price: 'Desde $85,000' },
+                    { type: 'Apartamento 1 dormitorio',  size: '65 m²',  bathrooms: 1, bedrooms: 1, price: 'Desde $120,000' },
+                    { type: 'Apartamento 2 dormitorios', size: '85 m²',  bathrooms: 2, bedrooms: 2, price: 'Desde $165,000' },
                     { type: 'Apartamento 3 dormitorios', size: '120 m²', bathrooms: 3, bedrooms: 3, price: 'Desde $245,000' },
-                    { type: 'Penthouse', size: '200 m²', bathrooms: 4, bedrooms: 4, price: 'Desde $450,000' }
+                    { type: 'Penthouse',                 size: '200 m²', bathrooms: 4, bedrooms: 4, price: 'Desde $450,000' }
                 ]
             },
-            'Residencial Vista Dorada': {
-                status: 'En Construcción',
-                description: 'Moderno conjunto residencial con diseño contemporáneo y espacios abiertos, pensado para familias modernas que buscan comodidad y estilo.',
-                features: [
-                    'Piscina familiar y piscina para niños',
-                    'Cancha de tenis y fútbol',
-                    'Playground para niños',
-                    'Área de BBQ y eventos',
-                    'Gimnasio al aire libre',
-                    'Senderos para caminar',
-                    'Seguridad perimetral',
-                    'Estacionamiento para visitantes'
-                ],
-                apartments: [
-                    { type: 'Apartamento 2 dormitorios', size: '70 m²', bathrooms: 2, bedrooms: 2, price: 'Desde $95,000' },
-                    { type: 'Apartamento 3 dormitorios', size: '95 m²', bathrooms: 2, bedrooms: 3, price: 'Desde $135,000' },
-                    { type: 'Apartamento 4 dormitorios', size: '130 m²', bathrooms: 3, bedrooms: 4, price: 'Desde $185,000' }
-                ]
-            },
-            'Plaza Central': {
+            'Complejo Habitacional Verona': {
                 status: 'Terminado',
-                description: 'Centro comercial moderno con locales comerciales y oficinas, estratégicamente ubicado en zona comercial de alto tráfico.',
+                description: 'Un espacio moderno y seguro diseñado para tu comodidad y la de tu familia, donde vivir tranquilo y bien ubicado es una realidad. Ubicado en Tonsupa, Esmeraldas, Ecuador.',
+                images: VERONA_IMAGES,
                 features: [
-                    'Locales comerciales de diferentes tamaños',
-                    'Oficinas corporativas',
-                    'Área de food court',
-                    'Estacionamiento de 3 niveles',
-                    'Sistema de aire acondicionado central',
-                    'Ascensores de alta velocidad',
+                    'Ubicación privilegiada en Tonsupa',
+                    'Diseño moderno y funcional',
                     'Seguridad 24/7',
-                    'Generador de emergencia'
+                    'Áreas comunes equipadas',
+                    'Estacionamiento privado',
+                    'Acabados de primera calidad',
+                    'Cerca de la playa',
+                    'Excelente conectividad'
                 ],
                 apartments: [
-                    { type: 'Local comercial pequeño', size: '25 m²', bathrooms: 1, bedrooms: 0, price: 'Desde $45,000' },
-                    { type: 'Local comercial mediano', size: '50 m²', bathrooms: 1, bedrooms: 0, price: 'Desde $85,000' },
-                    { type: 'Local comercial grande', size: '100 m²', bathrooms: 2, bedrooms: 0, price: 'Desde $165,000' },
-                    { type: 'Oficina pequeña', size: '30 m²', bathrooms: 1, bedrooms: 0, price: 'Desde $55,000' },
-                    { type: 'Oficina mediana', size: '60 m²', bathrooms: 1, bedrooms: 0, price: 'Desde $95,000' },
-                    { type: 'Oficina grande', size: '120 m²', bathrooms: 2, bedrooms: 0, price: 'Desde $185,000' }
-                ]
-            },
-            'Condominio Los Álamos': {
-                status: 'En Construcción',
-                description: 'Exclusivo conjunto de casas unifamiliares con jardín privado, diseñadas para ofrecer privacidad y tranquilidad en un ambiente familiar.',
-                features: [
-                    'Casas con jardín privado',
-                    'Garaje para 2 vehículos',
-                    'Área social común',
-                    'Piscina comunitaria',
-                    'Cancha múltiple',
-                    'Parque infantil',
-                    'Seguridad 24/7',
-                    'Portería con control de acceso'
-                ],
-                apartments: [
-                    { type: 'Casa 3 dormitorios', size: '120 m²', bathrooms: 3, bedrooms: 3, price: 'Desde $185,000' },
-                    { type: 'Casa 4 dormitorios', size: '150 m²', bathrooms: 4, bedrooms: 4, price: 'Desde $235,000' },
-                    { type: 'Casa 5 dormitorios', size: '200 m²', bathrooms: 5, bedrooms: 5, price: 'Desde $325,000' }
-                ]
-            },
-            'Edificio Empresarial': {
-                status: 'Terminado',
-                description: 'Moderno edificio corporativo con oficinas de alta gama, equipado con la última tecnología para empresas que buscan prestigio y funcionalidad.',
-                features: [
-                    'Oficinas con vista panorámica',
-                    'Salas de reuniones equipadas',
-                    'Auditorio para 100 personas',
-                    'Cafetería corporativa',
-                    'Estacionamiento exclusivo',
-                    'Sistema de seguridad avanzado',
-                    'Internet de alta velocidad',
-                    'Recepción y lobby ejecutivo'
-                ],
-                apartments: [
-                    { type: 'Oficina ejecutiva', size: '40 m²', bathrooms: 1, bedrooms: 0, price: 'Desde $75,000' },
-                    { type: 'Oficina corporativa', size: '80 m²', bathrooms: 1, bedrooms: 0, price: 'Desde $135,000' },
-                    { type: 'Suite empresarial', size: '150 m²', bathrooms: 2, bedrooms: 0, price: 'Desde $245,000' },
-                    { type: 'Piso completo', size: '300 m²', bathrooms: 4, bedrooms: 0, price: 'Desde $485,000' }
-                ]
-            },
-            'Residencial Océano': {
-                status: 'En Construcción',
-                description: 'Exclusivos apartamentos frente al mar con vista panorámica al océano, diseñados para quienes buscan una experiencia de vida única junto al mar.',
-                features: [
-                    'Vista panorámica al océano',
-                    'Acceso directo a la playa',
-                    'Piscina infinity frente al mar',
-                    'Restaurante y bar en la playa',
-                    'Spa con tratamientos marinos',
-                    'Deportes acuáticos',
-                    'Servicio de concierge',
-                    'Estacionamiento subterráneo'
-                ],
-                apartments: [
-                    { type: 'Apartamento 1 dormitorio vista mar', size: '75 m²', bathrooms: 1, bedrooms: 1, price: 'Desde $195,000' },
-                    { type: 'Apartamento 2 dormitorios vista mar', size: '105 m²', bathrooms: 2, bedrooms: 2, price: 'Desde $285,000' },
-                    { type: 'Apartamento 3 dormitorios vista mar', size: '145 m²', bathrooms: 3, bedrooms: 3, price: 'Desde $385,000' },
-                    { type: 'Penthouse frente al mar', size: '250 m²', bathrooms: 4, bedrooms: 4, price: 'Desde $695,000' }
+                    { type: 'Apartamento 1 dormitorio',  size: '55 m²',  bathrooms: 1, bedrooms: 1, price: 'Consultar' },
+                    { type: 'Apartamento 2 dormitorios', size: '80 m²',  bathrooms: 2, bedrooms: 2, price: 'Consultar' },
+                    { type: 'Apartamento 3 dormitorios', size: '110 m²', bathrooms: 2, bedrooms: 3, price: 'Consultar' },
                 ]
             }
         };
 
         function openProjectModal(projectName) {
-            const modal = document.getElementById('projectModal');
-            const modalContent = document.getElementById('modalContent');
+            const modal   = document.getElementById('projectModal');
             const project = projectData[projectName];
-            
             if (!project) return;
 
-            const statusClass = project.status === 'Terminado' ? '' : 'en-construccion';
-            
-            modalContent.innerHTML = `
-                <h2 style="color: #1a232c; margin-bottom: 1rem;">${projectName}</h2>
-                <span class="project-status ${statusClass}" style="margin-bottom: 2rem; display: inline-block;">${project.status}</span>
-                
-                <div class="project-gallery">
-                    <div class="gallery-item">Fachada Principal</div>
-                    <div class="gallery-item">Lobby de Entrada</div>
-                    <div class="gallery-item">Área Social</div>
-                    <div class="gallery-item">Piscina</div>
-                    <div class="gallery-item">Gimnasio</div>
-                    <div class="gallery-item">Apartamento Modelo</div>
-                </div>
-                
-                <div style="margin: 2rem 0;">
-                    <h3 style="color: #d4af37; margin-bottom: 1rem;">Descripción</h3>
-                    <p style="line-height: 1.6; color: #555;">${project.description}</p>
-                </div>
-                
-                <div style="margin: 2rem 0;">
-                    <h3 style="color: #d4af37; margin-bottom: 1rem;">Características y Amenidades</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem;">
-                        ${project.features.map(feature => `
-                            <div style="padding: 0.5rem; background: #f8f9fa; border-radius: 5px; font-size: 0.9rem;">
-                                <i class="fas fa-check" style="color: #27ae60; margin-right: 0.5rem;"></i>
-                                ${feature}
-                            </div>
-                        `).join('')}
+            document.getElementById('modalTitle').textContent = projectName;
+            const statusEl = document.getElementById('modalStatus');
+            statusEl.textContent = project.status;
+            statusEl.className = 'project-status modal-status' +
+                (project.status === 'Terminado' ? '' : ' en-construccion');
+
+            const galleryCol = document.getElementById('modalGalleryCol');
+            if (project.images && project.images.length > 0) {
+                galleryCol.innerHTML = buildGallery(project.images);
+            } else {
+                galleryCol.innerHTML = `
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;flex:1;align-content:start;">
+                        ${['Fachada','Lobby','Área Social','Piscina','Gimnasio','Apto. Modelo']
+                            .map(l => `<div class="gallery-item" style="height:100px;font-size:0.8rem;">${l}</div>`).join('')}
+                    </div>`;
+            }
+
+            const infoCol = document.getElementById('modalInfoCol');
+            infoCol.innerHTML = `
+                <p class="modal-desc">${project.description}</p>
+                <div>
+                    <div class="modal-section-title">Características</div>
+                    <div class="features-grid">
+                        ${project.features.map(f => `
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>${f}
+                            </div>`).join('')}
                     </div>
                 </div>
-                
-                <div class="project-details">
-                    <h3 style="color: #d4af37; margin-bottom: 1rem;">Opciones Disponibles</h3>
-                    <div class="details-grid">
+                <div>
+                    <div class="modal-section-title">Opciones Disponibles</div>
+                    <div class="apts-grid">
                         ${project.apartments.map(apt => `
-                            <div class="detail-item">
-                                <h4>${apt.type}</h4>
-                                <p><strong>Área:</strong> ${apt.size}</p>
-                                <p><strong>Dormitorios:</strong> ${apt.bedrooms}</p>
-                                <p><strong>Baños:</strong> ${apt.bathrooms}</p>
-                                <p style="color: #d4af37; font-weight: bold;">${apt.price}</p>
-                            </div>
-                        `).join('')}
+                            <div class="apt-row">
+                                <span class="apt-name">${apt.type}</span>
+                                <span class="apt-detail">${apt.size}</span>
+                                <span class="apt-detail">${apt.bedrooms} hab · ${apt.bathrooms} baños</span>
+                                <span class="apt-price">${apt.price}</span>
+                            </div>`).join('')}
                     </div>
                 </div>
-                
-                <div style="margin-top: 2rem; text-align: center;">
-                    <button onclick="showSection('contacto'); closeModal();" style="background: linear-gradient(45deg, #d4af37, #f4d03f); color: #1a232c; padding: 1rem 2rem; border: none; border-radius: 50px; font-weight: 600; cursor: pointer;">
-                        Solicitar Más Información
-                    </button>
-                </div>
+                <button class="modal-cta" onclick="showSection('contacto'); closeModal();">
+                    Solicitar Más Información
+                </button>
             `;
-            
-            modal.style.display = 'block';
+
+            modal.classList.add('open');
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
-            document.getElementById('projectModal').style.display = 'none';
+            document.getElementById('projectModal').classList.remove('open');
             document.body.style.overflow = 'auto';
         }
 
-        // Close modal when clicking outside
-        window.onclick = function(event) {
+        document.getElementById('projectModal').addEventListener('click', function(e) {
+            if (e.target.classList.contains('close') || e.target === this) closeModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
             const modal = document.getElementById('projectModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
+            if (modal.style.display !== 'block') return;
+            if (e.key === 'ArrowLeft')  galleryStep(-1);
+            if (e.key === 'ArrowRight') galleryStep(1);
+            if (e.key === 'Escape')     closeModal();
+        });
 
-        // Close modal with X button
-        document.querySelector('.close').onclick = closeModal;
-
-        // Contact form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const formData = new FormData(this);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-            
-            // Simulate form submission
             const submitBtn = this.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Enviando...';
             submitBtn.disabled = true;
-            
             setTimeout(() => {
                 alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
                 this.reset();
-                submitBtn.textContent = originalText;
+                submitBtn.textContent = 'Enviar Mensaje';
                 submitBtn.disabled = false;
             }, 2000);
-            
-            // Here you would typically send the data to your server
-            console.log('Form data:', data);
         });
 
-        // Mobile menu toggle
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
         });
 
-        // Smooth scrolling for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+        showSection('inicio');
+
+        // ── YOUTUBE IFRAME API ──
+        // Carga la API de YouTube de forma asíncrona
+        var tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(tag, firstScript);
+
+        var ytPlayer;
+        // Callback que llama la API cuando está lista
+        function onYouTubeIframeAPIReady() {
+            ytPlayer = new YT.Player('yt-player', {
+                videoId: '_bHuNn5HNBA',
+                playerVars: {
+                    autoplay:       1,
+                    mute:           1,
+                    loop:           1,
+                    playlist:       '_bHuNn5HNBA',
+                    controls:       0,
+                    showinfo:       0,
+                    rel:            0,
+                    disablekb:      1,
+                    modestbranding: 1,
+                    iv_load_policy: 3,
+                    playsinline:    1,
+                    origin:         window.location.origin || '*'
+                },
+                events: {
+                    onReady: function(e) {
+                        e.target.mute();
+                        e.target.playVideo();
+                    },
+                    onStateChange: function(e) {
+                        // Si se pausa o detiene por cualquier razón, vuelve a reproducir
+                        if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) {
+                            e.target.playVideo();
+                        }
+                    }
                 }
             });
-        });
-
-        // Initialize with home section
-        showSection('inicio');
+        }
     </script>
 </body>
 </html>
-
