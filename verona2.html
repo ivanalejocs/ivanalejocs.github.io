@@ -1159,16 +1159,16 @@
             target.classList.add('fade-in-up');
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Actualizar URL con hash
-        history.pushState(null, '', '#' + sectionName);
+        // Actualizar hash en la URL
+            location.hash = sectionName;
 
         // Close mobile menu
-        document.querySelector('.nav-links').style.display = '';
+            document.querySelector('.nav-links').style.display = '';
         }
 
         // Manejar botón atrás/adelante del navegador
-        window.addEventListener('popstate', function() {
-            const hash = window.location.hash.replace('#', '');
+        window.addEventListener('hashchange', function() {
+            const hash = location.hash.replace('#', '');
             showSection(hash || 'inicio');
         });
 
@@ -1369,7 +1369,7 @@
         });
 
         // Al cargar, leer el hash de la URL
-        const initialHash = window.location.hash.replace('#', '');
+        const initialHash = location.hash.replace('#', '');
         showSection(initialHash || 'inicio');
     </script>
 </body>
