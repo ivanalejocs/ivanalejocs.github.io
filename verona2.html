@@ -1300,4 +1300,16 @@
                 submitBtn.textContent = 'Enviar Mensaje';
                 submitBtn.disabled = false;
             }, 2000);
-        })
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Initialize with home section
+        showSection('inicio');
+    </script>
+</body>
+</html>
