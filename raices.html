@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Raices Coffee | El aroma que despierta tus sentidos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-primary": "#e3beb8",
+              "surface-tint": "#745853",
+              "on-primary-container": "#bf9d97",
+              "secondary-fixed": "#ffe088",
+              "on-secondary-fixed": "#241a00",
+              "secondary-fixed-dim": "#e9c349",
+              "secondary": "#735c00",
+              "tertiary-fixed": "#e4e4cc",
+              "surface-container": "#f0eded",
+              "on-tertiary-container": "#a5a690",
+              "on-surface-variant": "#504442",
+              "on-background": "#1b1c1c",
+              "on-error": "#ffffff",
+              "on-secondary-container": "#745c00",
+              "inverse-on-surface": "#f3f0ef",
+              "outline-variant": "#d4c3bf",
+              "tertiary-fixed-dim": "#c8c8b0",
+              "primary-fixed-dim": "#e3beb8",
+              "on-secondary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container-low": "#f6f3f2",
+              "secondary-container": "#fed65b",
+              "on-tertiary-fixed-variant": "#474836",
+              "surface-variant": "#e5e2e1",
+              "on-surface": "#1b1c1c",
+              "primary-container": "#4d3430",
+              "error": "#ba1a1a",
+              "surface-container-highest": "#e5e2e1",
+              "on-primary-fixed-variant": "#5b403c",
+              "surface-container-high": "#eae7e7",
+              "tertiary-container": "#3a3c2b",
+              "on-secondary-fixed-variant": "#574500",
+              "on-primary-fixed": "#2b1613",
+              "on-tertiary-fixed": "#1b1d0e",
+              "background": "#fcf9f8",
+              "outline": "#827471",
+              "surface-dim": "#dcd9d9",
+              "tertiary": "#252616",
+              "surface-bright": "#fcf9f8",
+              "primary-fixed": "#ffdad4",
+              "surface": "#fcf9f8",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "primary": "#351f1b",
+              "inverse-surface": "#303030",
+              "on-error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .noto-serif { font-family: 'Noto Serif', serif; }
+      .manrope { font-family: 'Manrope', sans-serif; }
+      body { background-color: #fcf9f8; color: #1b1c1c; }
+    </style>
+</head>
+<body class="manrope">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fcf9f8]/70 backdrop-blur-xl shadow-[0_16px_32px_rgba(53,31,27,0.08)]">
+<nav class="max-w-7xl mx-auto flex justify-between items-center py-6 px-12">
+<div class="text-2xl font-serif tracking-tighter text-[#351f1b] noto-serif antialiased">Raices Coffee</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#351f1b] border-b border-[#735c00]/40 pb-1 font-medium transition-colors duration-300" href="#home">Inicio</a>
+<a class="text-[#504442] hover:text-[#735c00] transition-colors duration-300 font-medium" href="#about">Sobre Nosotros</a>
+<a class="text-[#504442] hover:text-[#735c00] transition-colors duration-300 font-medium" href="#menu">Menú</a>
+<a class="text-[#504442] hover:text-[#735c00] transition-colors duration-300 font-medium" href="#gallery">Galería</a>
+<a class="text-[#504442] hover:text-[#735c00] transition-colors duration-300 font-medium" href="#contact">Contacto</a>
+</div>
+<button class="bg-[#351f1b] text-white px-6 py-2 rounded-DEFAULT font-label text-sm tracking-wide hover:opacity-90 transition-all scale-95 active:scale-90">Visítanos</button>
+</nav>
+</header>
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center overflow-hidden pt-20" id="home">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Warm and inviting restaurant interior showing a cozy dining area with traditional elements and fresh coffee service" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEnUTV1JU2xUUflqi9Z8CjPr-Z8NGsIXEXtOUEpOLpde92njZZHgetvdNdmtCAhStPm0zmiT3tmWWWwTPp5JbLBSqOVUNYCQPqKnrYSZcMtqnp_mFR0UoFbGVpbyir6jGJgSIofekETsu9ckFas_fZV_wATmu-dxmLftyuO7h6JGcqvkolblr7o8lMiOwgRWnP2KT6JMExgofEjz1IERuDiBh0eAG0E8swJdGDSHI3hT-c5U37QY10mdTecYz2_sBGTOo1TIgf8nk"/>
+<div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-12 w-full text-white">
+<div class="max-w-2xl space-y-8">
+<h1 class="text-6xl md:text-8xl noto-serif font-bold leading-tight tracking-tight">
+                    El aroma que despierta tus sentidos
+                </h1>
+<div class="flex items-center space-x-6">
+<button class="bg-[#351f1b] text-white px-8 py-4 rounded-DEFAULT font-label uppercase tracking-widest text-xs hover:bg-primary-container transition-all">
+                        Ver menú
+                    </button>
+<button class="border border-white/30 backdrop-blur-md text-white px-8 py-4 rounded-DEFAULT font-label uppercase tracking-widest text-xs hover:bg-white hover:text-primary transition-all">
+                        Visítanos
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- About Us Section -->
+<section class="py-32 bg-surface overflow-hidden" id="about">
+<div class="max-w-7xl mx-auto px-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+<div class="relative">
+<div class="absolute -top-12 -left-12 w-64 h-64 bg-secondary-fixed opacity-20 rounded-full blur-3xl"></div>
+<img class="relative z-10 w-full aspect-[4/5] object-cover rounded-lg shadow-2xl" data-alt="Traditional homemade breakfast and coffee setting on a rustic wooden table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrp9tVnHPxf8NUX_L5zJbIuq01W2Le0edDDFqFGC5REc21e4awnRwgY_Lubm04sIzLgc4rCn3nAppcSPJnBLwH5YuYk4u6OFjndaq_MqFUQFeS8f72kop0vqLvrgdVcOWOhM0-tv1MOpwYZAb1NYKVCWETwa_BEUVdLpCUXE0amL-Q0z4QvyuVDJjgzewuUYMlyaf97fWKk5SJx0QrS9mGYYHWACjMZOqsrmxsv_D9Eql-v_fMYupYQnh-3PbeNuLnpRNzXjiWMLE"/>
+</div>
+<div class="space-y-8">
+<span class="text-secondary font-label tracking-widest uppercase text-sm">Nuestra Historia</span>
+<h2 class="text-5xl noto-serif text-primary leading-tight">Tradición en cada bocado</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                        En Raices Coffee, creemos que la comida es más que sustento; es un ritual de familia. Desde nuestras raíces, hemos buscado ofrecer el mejor café tradicional y platos típicos que nos devuelven a casa. Cada taza de nuestro café de calidad es el resultado de una selección cuidadosa de granos locales.
+                    </p>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                        Nuestro compromiso es ofrecer una experiencia completa, donde el sabor de un buen plato fuerte se complementa con la frescura de nuestros helados artesanales y el calor de un café tradicional.
+                    </p>
+<div class="pt-4">
+<div class="h-px w-24 bg-secondary/30"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Menu Section -->
+<section class="py-32 bg-surface-container-low" id="menu">
+<div class="max-w-7xl mx-auto px-12">
+<div class="text-center mb-24 space-y-4">
+<h2 class="text-5xl noto-serif text-primary">Nuestra Selección</h2>
+<div class="w-12 h-1 bg-secondary mx-auto opacity-40"></div>
+</div>
+<!-- Row 1: Coffee & Desserts -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
+<!-- Coffees -->
+<div class="space-y-12">
+<h3 class="text-2xl noto-serif text-primary italic border-b border-outline-variant pb-4">Café de Calidad</h3>
+<div class="space-y-8">
+<div class="group">
+<div class="flex justify-between items-baseline mb-2">
+<span class="text-lg font-bold text-primary group-hover:text-secondary transition-colors">Café Tradicional Pasado</span>
+<span class="text-primary font-medium">$2.00</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Sabor intenso y aroma inconfundible del café de nuestra tierra.</p>
+</div>
+<div class="group">
+<div class="flex justify-between items-baseline mb-2">
+<span class="text-lg font-bold text-primary group-hover:text-secondary transition-colors">Café con Leche</span>
+<span class="text-primary font-medium">$2.50</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">La mezcla perfecta y reconfortante para cualquier hora.</p>
+</div>
+<div class="group">
+<div class="flex justify-between items-baseline mb-2">
+<span class="text-lg font-bold text-primary group-hover:text-secondary transition-colors">Capuchino</span>
+<span class="text-primary font-medium">$3.50</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Con espuma cremosa y un toque de canela.</p>
+</div>
+</div>
+</div>
+<!-- Helados -->
+<div class="space-y-12">
+<h3 class="text-2xl noto-serif text-primary italic border-b border-outline-variant pb-4">Helados</h3>
+<div class="space-y-8">
+<div class="group bg-surface-container-lowest p-6 rounded-lg shadow-sm border border-transparent hover:border-secondary/20 transition-all">
+<div class="flex justify-between items-baseline mb-2">
+<span class="text-lg font-bold text-primary group-hover:text-secondary transition-colors uppercase tracking-tight">Copa de la Casa</span>
+<span class="text-secondary font-bold">$5.50</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Tres sabores a elección con frutas frescas, crema y salsa de chocolate.</p>
+<span class="inline-block mt-3 text-[10px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded font-bold uppercase tracking-widest">Favorito</span>
+</div>
+<div class="group">
+<div class="flex justify-between items-baseline mb-2">
+<span class="text-lg font-bold text-primary group-hover:text-secondary transition-colors uppercase tracking-tight">Conos Simples y Dobles</span>
+<span class="text-primary font-medium">desde $1.50</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Crujiente galleta con nuestros sabores tradicionales.</p>
+</div>
+<div class="group">
+<div class="flex justify-between items-baseline mb-2">
+<span class="text-lg font-bold text-primary group-hover:text-secondary transition-colors">Banana Split</span>
+<span class="text-primary font-medium">$6.00</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Un clásico irresistible con guineo, helado y cerezas.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Row 2: Breakfast & Main Courses -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<!-- Desayunos -->
+<div class="space-y-12">
+<h3 class="text-2xl noto-serif text-primary italic border-b border-outline-variant pb-4">Desayunos</h3>
+<div class="space-y-8">
+<div class="group">
+<div class="flex justify-between items-baseline mb-2">
+<span class="text-lg font-bold text-primary group-hover:text-secondary transition-colors">Bolón de Verde con Queso</span>
+<span class="text-primary font-medium">$4.00</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Tradicional bolón de plátano verde con abundante queso manaba.</p>
+</div>
+<div class="group">
+<div class="flex justify-between items-baseline mb-2">
+<span class="text-lg font-bold text-primary group-hover:text-secondary transition-colors">Bolón Mixto</span>
+<span class="text-primary font-medium">$5.00</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Delicioso bolón con chicharrón y queso, acompañado de huevo frito.</p>
+</div>
+</div>
+</div>
+<!-- Platos Fuertes -->
+<div class="space-y-12">
+<div class="flex items-center justify-between border-b border-outline-variant pb-4">
+<h3 class="text-2xl noto-serif text-primary italic">Platos Fuertes</h3>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">* Sujeto a disponibilidad</span>
+</div>
+<div class="space-y-8">
+<div class="group">
+<div class="flex justify-between items-baseline mb-2">
+<span class="text-lg font-bold text-primary group-hover:text-secondary transition-colors">Seco de Pollo</span>
+<span class="text-primary font-medium">$7.50</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Guiso tradicional con arroz amarillo, maduro frito y ensalada.</p>
+</div>
+<div class="group">
+<div class="flex justify-between items-baseline mb-2">
+<span class="text-lg font-bold text-primary group-hover:text-secondary transition-colors">Seco de Carne</span>
+<span class="text-primary font-medium">$8.50</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Carne suave en salsa casera, servida con arroz y menestra.</p>
+</div>
+<div class="group">
+<div class="flex justify-between items-baseline mb-2">
+<span class="text-lg font-bold text-primary group-hover:text-secondary transition-colors">Seco de Chancho</span>
+<span class="text-primary font-medium">$8.00</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Tradicional preparación con el sazón secreto de la casa.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery Section -->
+<section class="py-32 bg-surface" id="gallery">
+<div class="max-w-7xl mx-auto px-12">
+<div class="grid grid-cols-12 gap-6">
+<div class="col-span-12 md:col-span-8 overflow-hidden rounded-xl">
+<img class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700" data-alt="Generous portion of traditional traditional food with rice and stew" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChtx5vgTUb-td2X0ucHc-CQsvWBDvigzBkX3buJAyOah-24IrBNUz02fcIkGvEPDymMA3pXD2Vw9EWKMQ2a_tvLCnbn_HIjo4bmo9DaJRvbpvw1MvCZfcunVNRDNFX5BzpjMeV1uLqy9-gFW-E9T3ORbSri_JCzMxGnlstBojBAJQLd0S7nx68TtsHSYJ8dcMz5WTx34bq9L06RfQpORwtE68UkpuNCZ90G8KuQiyB6jMWVUyLnnEgPj8OBhU0ozutqnEAE1VuAfk"/>
+</div>
+<div class="col-span-12 md:col-span-4 overflow-hidden rounded-xl">
+<img class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700" data-alt="Delicious traditional ice cream cup with toppings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA11N2Ikudp42okzS3E4clcGRDWAo0_z5hvi9lWWXEZ15X6i9mJOxpl6CZX8vcE-UB8BaMIr15nsqBY59Qq98LiWkiT5_-hJMnTpdQon00sJkJH7rHXRfE1YunggJLP7bdgF9VP9mKL3uLbFwzxgCnUP7HuMdLkFnPybfq-QOU_Ubdac_FrGErZZPR7EQV_vjFfj731sUFRhyDONsVdl-t3SQFk1zsoGcLz_5r7UxsU8wY4yAwFPsZ-bvC578H9sJ89fA50Z6YzP-E"/>
+</div>
+<div class="col-span-12 md:col-span-4 overflow-hidden rounded-xl">
+<img class="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700" data-alt="A plate of traditional bolones de verde with cheese and a cup of black coffee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQXC9F2Uq7FOXrX-2gBO-gCzleX9o60fom-V4diYzoseRViQ1ZLPvFDGv1rhM_m2AEBVwys3SHs1vDuUpT-MXJYLYa-gJsUcmRvcJeBi_x-ovlvCqB2m7E06XrOcuYXz0UVsyiiWlLhtMBU_WyoGP3hsGkpmk1eB5x7CW-Hojy5G7OXVfnlDLrGEcnJ7nws3y2chbZ5f32Wv7RL8qa-Elz--6ot-2m3prgIOIpTigX-np4aIw79OhRVPG2tC9uE3KE6TGEI_ZLTpI"/>
+</div>
+<div class="col-span-12 md:col-span-8 overflow-hidden rounded-xl">
+<img class="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700" data-alt="Cozy interior of the traditional restaurant with people enjoying food" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpb68zOjBEdZ40UQ77UgLgYxO45ZDXkLKUMteZagumRKqZ9XkkH-TrDW6VkRGfkKBirXcc5lz_NFlgNtYvfFV1N3PPyYsWkUssM2sMaSOaiKzXbFqxkAA9i2C8ztTh9eFwup__uDAy--J6ZWOS4rUKXFWreSqy2oKD0z4OIkDmJvxa5kFTH2ft88eYgcV7mnb1XEjw8rBjxysJpw92aix-Sc2gsw6snyKsNI0Ov63TwMeOQmIZgMeTrEpy291IfDtYXcVrSE6Vs4Q"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Reviews Section -->
+<section class="py-32 bg-surface-container">
+<div class="max-w-7xl mx-auto px-12 text-center">
+<h2 class="text-4xl noto-serif text-primary mb-20">Voces de Nuestra Comunidad</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="bg-surface p-10 rounded-lg shadow-[0_16px_32px_rgba(53,31,27,0.04)] text-left space-y-6">
+<div class="flex text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant italic leading-relaxed">"El café pasado es increíble, me recuerda a las mañanas en casa de mi abuela. Y los bolones de verde son los mejores que he probado."</p>
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold">M</div>
+<div>
+<p class="font-bold text-primary text-sm">Mariana R.</p>
+<p class="text-xs text-on-surface-variant">Cliente Frecuente</p>
+</div>
+</div>
+</div>
+<div class="bg-surface p-10 rounded-lg shadow-[0_16px_32px_rgba(53,31,27,0.04)] text-left space-y-6 transform translate-y-4">
+<div class="flex text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant italic leading-relaxed">"Vengo con mis hijos por los helados y yo siempre pido el seco de pollo. La sazón es auténtica y el ambiente muy acogedor."</p>
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold">J</div>
+<div>
+<p class="font-bold text-primary text-sm">Julian S.</p>
+<p class="text-xs text-on-surface-variant">Padre de Familia</p>
+</div>
+</div>
+</div>
+<div class="bg-surface p-10 rounded-lg shadow-[0_16px_32px_rgba(53,31,27,0.04)] text-left space-y-6">
+<div class="flex text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant italic leading-relaxed">"Un lugar tradicional con comida de calidad. La atención es rápida y amable. ¡El seco de carne es 10/10!"</p>
+<div class="flex items-center space-x-4">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold">A</div>
+<div>
+<p class="font-bold text-primary text-sm">Alejandra M.</p>
+<p class="text-xs text-on-surface-variant">Local Guide</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Location & Contact Section -->
+<section class="py-32 bg-surface" id="contact">
+<div class="max-w-7xl mx-auto px-12">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+<div class="space-y-12">
+<h2 class="text-5xl noto-serif text-primary">Donde encontrarnos</h2>
+<div class="space-y-8">
+<div class="flex space-x-6">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+<div>
+<h4 class="font-bold text-primary mb-1">Dirección</h4>
+<p class="text-on-surface-variant">Calle de las Raíces 123, Barrio Histórico, Bogotá DC.</p>
+</div>
+</div>
+<div class="flex space-x-6">
+<span class="material-symbols-outlined text-secondary">schedule</span>
+<div>
+<h4 class="font-bold text-primary mb-1">Horarios</h4>
+<p class="text-on-surface-variant">Lunes a Sábado: 8:00 AM - 9:00 PM</p>
+<p class="text-on-surface-variant">Domingos y Festivos: 9:00 AM - 7:00 PM</p>
+</div>
+</div>
+<div class="flex space-x-6">
+<span class="material-symbols-outlined text-secondary">mail</span>
+<div>
+<h4 class="font-bold text-primary mb-1">Contacto</h4>
+<p class="text-on-surface-variant">hola@raicescoffee.com</p>
+<p class="text-on-surface-variant">+57 (300) 123-4567</p>
+</div>
+</div>
+</div>
+<div class="flex space-x-6">
+<a class="bg-[#25D366] text-white flex items-center space-x-3 px-8 py-4 rounded-lg font-bold hover:opacity-90 transition-all shadow-lg" href="https://wa.me/1234567890" target="_blank">
+<span class="material-symbols-outlined">chat</span>
+<span>WhatsApp</span>
+</a>
+<div class="flex items-center space-x-4 px-4">
+<a class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary hover:bg-secondary hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">share</span>
+</a>
+</div>
+</div>
+</div>
+<div class="relative h-[600px] w-full rounded-xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover grayscale opacity-80" data-alt="Stylized map showing a specific urban neighborhood location with gold pin accent and elegant cream background" data-location="Bogota, Colombia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ6N9QleIdqvSd65Hy3O-Zo_NoXTCYZW4PO1nnI3k9detAcziMWg8ieA_5ngDFBYBQdS72XdmNQpsbz7cqwrlz4ebQJ4q8iaCE1TOeZlKbMveboh0POdns58NnSgl8lB6nC9vS1nA-84DFK6aIbBw_jYhPqxGWfDBPeMeYIK-GsvXFW4Bx0n2RXZ-3tZAfmZZjTic_gM37KuMkb2vTAfvH-M0U-_yyLgT8SdoLRc0TjbEtWnswOkHZJRBtDHegjIf26EQFa0hISz4"/>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center shadow-2xl animate-pulse">
+<span class="material-symbols-outlined text-white">restaurant</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#f0eded] dark:bg-[#2a1a17] text-[#351f1b] dark:text-[#fcf9f8] w-full mt-24">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-16 max-w-7xl mx-auto py-20 px-12 manrope text-sm leading-relaxed">
+<div class="space-y-6">
+<div class="font-serif text-lg tracking-tight noto-serif">Raices Coffee</div>
+<p class="text-[#504442] dark:text-[#827471]">Tradición y sabor en cada plato. Tu refugio de comida casera y café de calidad en el corazón de la ciudad.</p>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-primary dark:text-white uppercase tracking-widest text-xs">Explora</h4>
+<ul class="space-y-4">
+<li><a class="text-[#504442] dark:text-[#827471] hover:text-[#735c00] transition-all" href="#">Historia</a></li>
+<li><a class="text-[#504442] dark:text-[#827471] hover:text-[#735c00] transition-all" href="#">Menú Completo</a></li>
+<li><a class="text-[#504442] dark:text-[#827471] hover:text-[#735c00] transition-all" href="#">Heladería</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-primary dark:text-white uppercase tracking-widest text-xs">Legal</h4>
+<ul class="space-y-4">
+<li><a class="text-[#504442] dark:text-[#827471] hover:text-[#735c00] transition-all" href="#">Política de Privacidad</a></li>
+<li><a class="text-[#504442] dark:text-[#827471] hover:text-[#735c00] transition-all" href="#">Términos de Servicio</a></li>
+</ul>
+</div>
+<div class="space-y-6">
+<h4 class="font-bold text-primary dark:text-white uppercase tracking-widest text-xs">Redes Sociales</h4>
+<div class="flex space-x-4">
+<a class="text-[#351f1b] dark:text-white hover:translate-x-1 duration-300" href="#">Instagram</a>
+<a class="text-[#351f1b] dark:text-white hover:translate-x-1 duration-300" href="#">Facebook</a>
+</div>
+<p class="text-[#504442] dark:text-[#827471] text-xs mt-8">© 2024 Raices Coffee. Archivo Tradicional.</p>
+</div>
+</div>
+</footer>
+</body></html>
